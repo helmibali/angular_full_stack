@@ -1,0 +1,38 @@
+<app-dashboard></app-dashboard>
+<div class="container mt-5">
+    <h1>Modifier Produit</h1>
+
+    <!-- formulaire ajout de produit -->
+   
+
+<form action="">
+    <div  class="col-sm-2 col-md-2 col-lg-2">
+        <label for="">ID Produit</label>
+        <input readonly type="number" [(ngModel)]="currentProduit.idProduit" name="idProduit" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="">Nom Produit</label>
+        <input type="text" [(ngModel)]="currentProduit.nomProduit" name="nomProduit" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="">Prix Produit</label>
+        <input type="number" [(ngModel)]="currentProduit.prixProduit" name="prixProduit" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Date Création</label>
+        <input type="date" [ngModel]="currentProduit.dateCreation | date: 'yyyy-MM-dd'" 
+        (ngModelChange)="currentProduit.dateCreation = $event" name="dateCreation" class="form-control">
+        <!-- <input type="date" [ngModel]="currentProduit.dateCreation| date: 'yyyy-MM-dd'"
+        (ngModelChange)=" currentProduit.dateCreation= $event" name="dateCreation" class="form-control"> -->
+
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label for="">modeles Produit</label>
+        <input type="text" [(ngModel)]="currentProduit.modeles" name="modeles" class="form-control">
+    </div>
+</form>
+<div class="mt-2">
+    <button type="submit" (click)="updateProduit()" class="btn btn-info">Modifier</button>
+    </div>
+</div>
+

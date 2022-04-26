@@ -1,0 +1,72 @@
+
+<app-navbar></app-navbar>
+<div class="all">
+<div class="filtre">
+    <div class="option">
+       
+             <div><input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [(ngModel)]="term"></div> 
+             
+      <!-- <input type="text" name="search" [(ngModel)]="term"> -->
+    <div class="marque"> 
+        <label>Catégorie :</label> 
+        <select  class="custom-select custom-select-sm">
+            <option></option>
+          <option *ngFor="let c of categories">{{c.nomCategorie}}</option>
+        
+        </select>
+    </div>
+ <div class="marque"> 
+    <label>Marque :</label> 
+      <select class="custom-select custom-select-sm">
+        <option></option>
+        <option *ngFor="let m of marques">{{m.libelleMarque}}</option>
+      </select>
+</div> 
+
+<div class="marque">
+    <label>Modeles :</label>  
+    <select class="custom-select custom-select-sm">
+      <option></option>
+      <option *ngFor="let mod of modeles">{{mod.libelleModele}}</option>
+    </select>
+</div>
+</div>
+</div>
+
+<div class="produits">
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let p of produits|filter:term">
+                <div class="card h-100" >
+                    <!-- Product image-->
+                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{  p.nomProduit }}</h5>
+                            <!-- Product price-->
+                            {{p.prixProduit}}
+                        </div>
+                        <div *ngFor=""></div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Plus de détail</a></div>
+                    </div>
+                </div>
+            </div>
+
+      
+   
+        
+    
+          
+        </div>
+    </div>
+</section>
+</div>
+</div>
+<app-footer></app-footer>

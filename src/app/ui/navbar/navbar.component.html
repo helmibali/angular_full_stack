@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+<title>Gestion des Produits</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<!-- Brand -->
+<a class="navbar-brand" routerLink="/"><img src="../../../assets/images/Zeronet_logo.png" width="50" alt=""></a>
+<!-- Links -->
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" routerLink="/" >Acceill</a>
+</li>
+<li class="nav-item">
+<a class="nav-link"  routerLink="/nos-produits">Nos Produits</a>
+</li>
+
+
+        
+
+</ul>
+<ul class="navbar-nav ml-auto" >
+    <!-- <li><a class="nav-link">{{ authService.loggedUser}}</a></li> -->
+    <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/inscription">
+        <i class="fa fa-user-plus"></i> &nbsp;Inscription</a></li>
+    <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/login">
+        <i class="fa fa-user"></i> &nbsp;Connexion</a></li>
+    <!-- <li><a *ngIf="authService.isloggedIn" (click)="logout()" class="nav-link" routerLink="/login">
+        <i class="fa fa-user"></i> &nbsp;deconnexion</a></li> -->
+        
+        <div *ngIf="authService.isloggedIn" class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ authService.loggedUser}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              
+            
+                 
+                  
+                        <button class="dropdown-item" type="button">
+                            <a *ngIf="authService.isAdmin()" class="user_options" routerLink="/produits">
+                                <i class="fa fa-user"></i> &nbsp;Dashboard</a>
+                            </button>
+
+              <button class="dropdown-item" type="button">
+                <a *ngIf="authService.isloggedIn" (click)="logout()" class="user_options" routerLink="/login">
+                    <i class="fa fa-user"></i> &nbsp;deconnexion</a>
+                </button>
+                
+            </div>
+          </div>
+        
+        
+
+</ul>
+</nav>
+</body>
+</html>
