@@ -55,5 +55,8 @@ public dataForm: FormGroup;
       const url = `${'/api/marque'}/${id}`;
       return this.http.get<Marque>(url);
     }
+    getAllMarques():Observable<any>{
+      return this.http.get<any>('/api/marque/liste');
+    }
 }
 

@@ -44,12 +44,32 @@ produits :Produit[];
     return this.http.post("/api/produit/add", formData);
   }
 
+  updateData(formData: FormData,id:number): Observable<any> {
+    return this.http.put(`${'api/produit'}/${id}`, formData);
+  }
+
+
+
+
 
 
 listeProduits():Observable<Produit[]>{
   
   return this.http.get<Produit[]>(this.apiURL);
 }
+listeProduitsByCategorie(id: number):Observable <Produit[]>{
+  const url = `${'/api/produit_cat'}/${id}`;
+  return this.http.get<Produit[]>(url);
+}
+listeProdduitsByModele(id:number):Observable <Produit[]>{
+  const url = `${'/api/produit/modele'}/${id}`;
+  return this.http.get<Produit[]>(url);
+}
+listeProdduitsByModeleAndCategorie(id_mod:number,id_cat:number):Observable <Produit[]>{
+  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}`;
+  return this.http.get<Produit[]>(url);
+}
+
 listeCategories():Observable<Categorie[]>{
   
   return this.http.get<Categorie[]>('/api/categorie/liste');
@@ -77,14 +97,14 @@ ajouterCategorie(cat : Categorie):Observable<Categorie>{
 
 supprimerProduit(id: number){
 
-  const url = `${this.apiURL}/${id}`;
+  const url = `${'api/produit/delete'}/${id}`;
   return this.http.delete(url, httpOPtions);
   }
 
 
 consulterProduit(id : number): Observable<Produit>{
 
-  const url = `${this.apiURL}/${id}`;
+  const url = `${'api/produit'}/${id}`;
   return this.http.get<Produit>(url);
 
 }

@@ -33,6 +33,7 @@ import { TestComponent } from './test/test.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { FiltreComponent } from './ui/filtre/filtre.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AddModeleComponent } from './pages/modele/add-modele/add-modele.component';
 
 
 
@@ -65,7 +66,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ListModeleComponent,
     TestComponent,
     UpdateUserComponent,
-    FiltreComponent
+    FiltreComponent,
+    AddModeleComponent
     
     
   ],

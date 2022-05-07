@@ -7,7 +7,7 @@ export class Produit {
     prixProduit : number;
     dateCreation : Date ;
      modeles : Modele[];
-     categorie_id : number;
+     categorie :Categorie;
 
 
 //   constructor(idProduit:number, nomProduit:string,prixProduit:number, dateCreation : Date, modeles : Modele[],categorie : Categorie){

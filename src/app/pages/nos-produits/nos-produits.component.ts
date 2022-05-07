@@ -17,9 +17,15 @@ import { ModeleService } from 'src/app/services/modele.service';
 export class NosProduitsComponent implements OnInit {
   term;
   categories:Categorie[];
-  marques:Marque[];
+  marques:any[];
+  produit:Produit;
   produits:Produit[];
-  modeles:Modele[];
+  modeles:any[];
+  modele:Modele;
+  produitsCategorie: Produit[];
+  selectedMarque: any = {id:0, marqueLibelle:''};
+  selectedCategorie: any = {id:0, nomCategorie:''};
+  selectedModele: any = {id:0, libelleModele:''};
   constructor(
     private catService : CatService,
     private produitService : ProduitService,
@@ -32,6 +38,15 @@ export class NosProduitsComponent implements OnInit {
     this.marquesList();
     this.modeleList();
     this.produitList();
+    this.onSelect(this.selectedMarque.id);
+  
+   
+  }
+
+  PrduitsCategorieList(id:number){
+    this.produitService.listeProduitsByCategorie(id).subscribe(data=>{
+    this.produitsCategorie=data;
+    })
   }
 
   CategoriesList(){
@@ -41,7 +56,8 @@ export class NosProduitsComponent implements OnInit {
     });
   }
 marquesList(){
-  this.marqueService.getAll().subscribe(m=>{
+  this.marqueService.getAllMarques().subscribe(m=>{
+
     this.marques=m;
   })
 }
@@ -49,13 +65,63 @@ marquesList(){
 
 produitList(){
   this.produitService.listeProduits().subscribe(p=>{
+    console.log(p);
     this.produits=p;
   })
 }
 
 modeleList(){
-  this.modeleService.getAll().subscribe(mo=>{
+  this.modeleService.getAllModeles().subscribe(mo=>{
     this.modeles=mo;
   })
+}
+
+
+
+
+onSelect(e){
+  console.log(e.target.value);
+
+  this.modeleService.getAllModelesByMarque_id(e.target.value).subscribe(data=>{
+    this.modeles = data;
+  })
+}
+
+onSelectByMod(e){
+  console.log(e.target.value);
+  this.selectedModele.id=e.target.value;
+  // this.produitService.listeProdduitsByModele(e.target.value).subscribe(data=>{
+  //   this.produits = data;
+  // })
+  
+}
+onSelectByCat(e){
+  //console.log(e.target.value);
+  this.selectedCategorie.id = e.target.value;
+  // this.produitService.listeProduitsByCategorie(e.target.value).subscribe(data=>{
+  //   this.produits = data;
+  // })
+}
+
+onSubmit(){
+  if (this.selectedModele.id==0){
+     this.produitService.listeProduitsByCategorie(this.selectedCategorie.id).subscribe(data=>{
+   this.produits = data;
+  })
+}
+  else if(this.selectedCategorie.id==0){
+ this.produitService.listeProdduitsByModele(this.selectedModele.id).subscribe(data=>{
+     this.produits = data;
+   })
+
+  }else{
+    this.produitService.listeProdduitsByModeleAndCategorie(this.selectedModele.id,this.selectedCategorie.id).subscribe(p=>{
+      this.produits = p;
+    })
+
+  }
+ 
+
+
 }
 }

@@ -9,28 +9,30 @@
       <!-- <input type="text" name="search" [(ngModel)]="term"> -->
     <div class="marque"> 
         <label>Catégorie :</label> 
-        <select  class="custom-select custom-select-sm">
-            <option></option>
-          <option *ngFor="let c of categories">{{c.nomCategorie}}</option>
+        <select  class="custom-select custom-select-sm" [(ngModel)]="selectedCategorie.id" (change)="onSelectByCat($event)">
+            <option value="0">--Choisir catégorie--</option>
+          <option *ngFor="let c of categories" [value]="c.id">{{c.nomCategorie}}</option>
         
         </select>
     </div>
  <div class="marque"> 
     <label>Marque :</label> 
-      <select class="custom-select custom-select-sm">
-        <option></option>
-        <option *ngFor="let m of marques">{{m.libelleMarque}}</option>
+      <select class="custom-select custom-select-sm" [(ngModel)]="selectedMarque.id"(change)="onSelect($event)">
+        <option value="0">--Choisir marque--</option>
+        <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
       </select>
 </div> 
 
 <div class="marque">
     <label>Modeles :</label>  
-    <select class="custom-select custom-select-sm">
-      <option></option>
-      <option *ngFor="let mod of modeles">{{mod.libelleModele}}</option>
+    <select class="custom-select custom-select-sm" [(ngModel)]="selectedModele.id" (change)="onSelectByMod($event)">
+      <option value="0">--Choisir modele--</option>
+      <option *ngFor="let mod of modeles" [value]="mod.id">{{mod.libelleModele}}</option>
     </select>
 </div>
+<button class="btn btn-outline-primary mt-3 justify-content-center" (click)="onSubmit()"><i class="fa fa-search"></i> </button>
 </div>
+
 </div>
 
 <div class="produits">
@@ -41,16 +43,26 @@
             <div class="col mb-5" *ngFor="let p of produits|filter:term">
                 <div class="card h-100" >
                     <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    <img class="card-img-top"
+                     src="{{'api/imgp/'+p.idProduit}}" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{  p.nomProduit }}</h5>
                             <!-- Product price-->
-                            {{p.prixProduit}}
+                            {{p.prixProduit}} TND
                         </div>
-                        <div *ngFor=""></div>
+                        <div >
+                            <ul class="list-group" *ngFor="let m of p.modeles">
+                                <li class="list-group-item"> <img href="#"><img class="card-img-top img-responsive"
+                                    src = "{{'/api/Imgarticles/'+m.marque.id}}" 
+                                    style = "height :40px;width:60px"
+                                   alt=""> {{m.libelleModele}} </li>
+                                   
+                            </ul>
+
+                        </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

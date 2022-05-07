@@ -1,5 +1,5 @@
 export class Marque{
-    id : number;
+   id : number;
     libelleMarque: string;
     
 }

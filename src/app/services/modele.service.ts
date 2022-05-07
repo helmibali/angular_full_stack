@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Modele } from '../model/modele.model';
 
@@ -13,7 +14,8 @@ const httpOPtions = {
 })
 export class ModeleService {
 modeles:Modele[];
-apiUrl:'api/modele'
+apiUrl:'api/modele';
+public dataForm: FormGroup;
   constructor(
     private http: HttpClient
   ) { }
@@ -33,12 +35,21 @@ apiUrl:'api/modele'
     return this.http.put<Modele>(url , m, httpOPtions );
 
   }
-  ajouterCategorie(m : Modele):Observable<Modele>{
-    return this.http.post<Modele>('/api/modele/add',m,httpOPtions);
+  ajouterCategorie(formData: FormData):Observable<any>{
+    return this.http.post<any>('api/modele/add',formData);
   }
   supprimerCategorie(id: number){
 
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url, httpOPtions);
     }
+
+    getAllModeles():Observable<any>{
+      return this.http.get<any>('/api/modele/liste');
+    }
+
+    getAllModelesByMarque_id(id:number):Observable<any>{
+      return this.http.get<any>(`${'/api/modeleByMarqueId'}/${id}`);
+    }
+    
 }

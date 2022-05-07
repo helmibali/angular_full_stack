@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { Role } from 'src/app/model/role.model';
@@ -25,12 +25,33 @@ export class UpdateUserComponent implements OnInit {
     public fb:FormBuilder,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-  ) { }
+  ) {
+    this.userService.dataForm = this.fb.group({
+      prenom:'',
+      nom:'',
+      naissance:'',
+      roles :[],
+      });
+
+
+   }
 
   ngOnInit(): void {
-    this.infoForm();
-    this.RolesData();
+    
+    
+    this.userService.getUserById(this.activatedRoute.snapshot.params.user_id).
+    subscribe( user =>{
+      this.currentUser=user;
+      this.RolesData();
+      this.userService.dataForm = new FormGroup({
+        prenom: new FormControl(this.currentUser.prenom),
+        nom:new FormControl(this.currentUser.nom),
+        naissance: new FormControl(this.currentUser.naissance),
+        roles :new FormControl(this.currentUser.roles),
+        });
+  
 
+    });
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
@@ -49,26 +70,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
 
-  infoForm(){
-    this.userService.getUserById(this.activatedRoute.snapshot.params.user_id).
-    subscribe( user =>{
-      this.currentUser=user;
-      this.userService.dataForm = this.fb.group({
-      prenom: new FormControl(user.prenom,[
-        Validators.required,
-        Validators.pattern("[A-Za-z .'-]+"),
-        Validators.minLength(2)
-      ]),
-      nom:new FormControl(user.nom,[
-        Validators.required,
-        Validators.pattern("[A-Za-z .'-]+"),
-        Validators.minLength(2)
-      ]),
-      naissance: new FormControl(user.naissance),
-      roles :new FormControl(user.roles),
-      });
-    });
-  }
+
   updateData(){
     const formData = new FormData();
     const user = this.userService.dataForm.value;
@@ -80,10 +82,7 @@ export class UpdateUserComponent implements OnInit {
     });
   }
 
-  handleButtonClick(){
-   // console.log('reactive form value ', this.form.value);
-  //  console.log('Actual data ', this.getObjectListFromData(this.form.value.dropdownList.map(item => item.id )));
-  }
+
 
 
 

@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AddMarqueComponent } from './pages/marque/add-marque/add-marque.component';
 import { ListMarqueComponent } from './pages/marque/list-marque/list-marque.component';
 import { UpdateMarqueComponent } from './pages/marque/update-marque/update-marque.component';
+import { AddModeleComponent } from './pages/modele/add-modele/add-modele.component';
 import { ListModeleComponent } from './pages/modele/list-modele/list-modele.component';
 import { NosProduitsComponent } from './pages/nos-produits/nos-produits.component';
 import { PieceComponent } from './pages/piece/piece.component';
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path:"updateCategorie/:id", component:UpdateCategorieComponent },
   {path:"modeles",component:ListModeleComponent},
   {path:"test",component:TestComponent},
-  {path:"modifier-utilisateur/:user_id" ,component:UpdateUserComponent}
+  {path:"modifier-utilisateur/:user_id" ,component:UpdateUserComponent},
+  {path:"ajouter-modele" , component:AddModeleComponent}
 
 ];
 

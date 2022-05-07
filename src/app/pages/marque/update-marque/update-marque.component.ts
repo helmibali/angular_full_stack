@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Marque } from 'src/app/model/marque.model';
 import { MarqueService } from 'src/app/services/marque.service';
@@ -20,15 +20,19 @@ export class UpdateMarqueComponent implements OnInit {
     public fb:FormBuilder,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-    ) { }
+    ) {
+      this.marqueService.dataForm = this.fb.group({
+        libelleMarque: new FormControl(this.currentMarque.libelleMarque),
+      })
+     }
 
     ngOnInit(): void {
       this.marqueService.consulterMarque(this.activatedRoute.snapshot.params.id).
     subscribe( marq =>{
        this.currentMarque = marq;
-       this.marqueService.dataForm = this.fb.group({
-        id: [this.currentMarque.id],
-        libelleMarque:[this.currentMarque.libelleMarque],
+       this.marqueService.dataForm = new FormGroup({
+        id:new FormControl (this.currentMarque.id),
+        libelleMarque: new FormControl(this.currentMarque.libelleMarque),
          });
           });
      }

@@ -23,7 +23,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let produit of produits">
-        <td>{{produit.idProduit}}</td>
+      <td>
+        <a href="#"><img class="card-img-top img-responsive rounded-circle"
+            src = "{{'api/imgp/'+produit.idProduit}}" 
+            style = "height :70px;width:50px"
+           alt=""></a>
+    </td> 
         <td>{{produit.nomProduit}}</td>
         <td>{{produit.prixProduit}}</td>
         <td>{{produit.dateCreation|date:'dd/MM/yyyy'}}</td> 
