@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
@@ -6,8 +6,10 @@ import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { AddCategorieComponent } from './pages/categorie/add-categorie/add-categorie.component';
 import { ListeCategorieComponent } from './pages/categorie/liste-categorie/liste-categorie.component';
 import { UpdateCategorieComponent } from './pages/categorie/update-categorie/update-categorie.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { ListContactComponent } from './pages/list-contact/list-contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddMarqueComponent } from './pages/marque/add-marque/add-marque.component';
 import { ListMarqueComponent } from './pages/marque/list-marque/list-marque.component';
@@ -20,6 +22,8 @@ import { ProduitsComponent } from './pages/produits/produits.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { AddUserComponent } from './pages/user/add-user/add-user.component';
+import { UpdateImageComponent } from './pages/user/update-image/update-image.component';
+import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 import { ProduitGuard } from './produit.guard';
 import { TestComponent } from './test/test.component';
@@ -47,6 +51,10 @@ const routes: Routes = [
   {path:"modeles",component:ListModeleComponent},
   {path:"test",component:TestComponent},
   {path:"modifier-utilisateur/:user_id" ,component:UpdateUserComponent},
+  {path:"modifier-image-utilisateur/:user_id" ,component:UpdateImageComponent},
+  {path:"update-password",component:UpdatePasswordComponent},
+  {path:"contact",component:ContactComponent},
+  {path:"contact-liste",component:ListContactComponent},
   {path:"ajouter-modele" , component:AddModeleComponent}
 
 ];

@@ -50,17 +50,14 @@ export class UpdateProduitComponent implements OnInit {
           this.modeles=m;});
           this.produitService.listeCategories().subscribe(c=>{
             this.categories=c;});
-
           this.produitService.dataForm = new FormGroup({
             nomProduit:new FormControl(this.currentProduit.nomProduit),
           prixProduit:new FormControl(this.currentProduit.prixProduit),
           dateCreation:new FormControl(this.currentProduit.dateCreation),
           modeles : new FormControl(this.currentProduit.modeles),
           categorie_id : new FormControl(this.currentProduit.categorie.id),
-          
-         
         });
-         });
+      });
             
         console.log(this.currentProduit)
 
@@ -116,6 +113,7 @@ onSubmit(){
   this.produitService.updateData(formData,this.currentProduit.idProduit).subscribe(data=>{
     console.log(data);
     this.router.navigate(['/produits']);
+    window.location.reload();
   });
 }
 

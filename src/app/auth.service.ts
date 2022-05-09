@@ -14,6 +14,8 @@ const httpOPtions = {
 })
 export class AuthService {
 public loggedUser:string;
+public loggedUserId:number;
+public loggedUserPassword:String;
 public isloggedIn:Boolean=false;
 public roles:Role[];
 
@@ -35,6 +37,8 @@ apiURLall: string = '/api/users/liste';
   signIn(user:User)
   {
     this.loggedUser=user.username;
+    this.loggedUserId=user.user_id;
+    this.loggedUserPassword=user.password;
     this.isloggedIn=true;
     this.roles=user.roles;
     localStorage.setItem('loggedUser',this.loggedUser);
@@ -80,6 +84,8 @@ apiURLall: string = '/api/users/liste';
       this.isloggedIn = true;
       this.getUserRoles(login);
       }
+
+    
     
    
     

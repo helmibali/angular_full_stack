@@ -30,7 +30,7 @@
           <tr *ngFor="let u of users">
             <td>{{ u.user_id }}</td> 
             <td>
-              <a href="#"><img class="card-img-top img-responsive rounded-circle"
+              <a [routerLink]="['/modifier-image-utilisateur',u.user_id]"><img class="card-img-top img-responsive rounded-circle"
                   src = "{{'/api/ImgUser/'+u.user_id}}" 
                   style = "height :70px;width:50px"
                  alt=""></a>

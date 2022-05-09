@@ -63,13 +63,14 @@
 
 
           <div class="form-group">
-            <label>File Upload  </label>
+            <label>Uploader Une image</label>
                 <input type="file" accept="image/*" (change)="onSelectFile($event)">
                 <img [src]="imgURL" height="200" *ngIf="imgURL">
         </div>
 
 
           <button class="button" type="submit">Ajouter</button>
+          <button class="button" routerLink="/produits">retour</button>
     </form>
 </div>
    

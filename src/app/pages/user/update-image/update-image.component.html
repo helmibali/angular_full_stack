@@ -1,0 +1,24 @@
+<app-dashboard></app-dashboard>
+
+
+<div class="container tab card shadow mb-4 tab" style= "margin-left:20%;">
+    <form [formGroup]="this.userService.dataForm" (ngSubmit)="onSubmit()">
+      <h5 class="text-center mt-1">Image d'utilisateur</h5>
+      <div>
+        <img class="card-img-top img-responsive"
+            src = "{{'/api/ImgUser/'+currentUser.user_id}}" 
+            style = "height :150px;width:120px"
+           alt="">
+        </div> 
+
+<div class="form-group">
+    <label>Uploader Une image</label>
+        <input type="file" accept="image/*" (change)="onSelectFile($event)">
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+</div>
+
+
+<button class="button" type="submit">Metre à jour</button>
+<button class="button" routerLink="/utilisateurs">conserver l'actuel image</button>
+</form>
+</div>

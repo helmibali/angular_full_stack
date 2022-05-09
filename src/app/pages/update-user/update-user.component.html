@@ -1,47 +1,40 @@
 
 <app-dashboard></app-dashboard>
 <div class="container tab">
-    <form [formGroup]="this.userService.dataForm" (ngSubmit)="updateData()">
+  <h3> Modifier les autorisations de l'utilisateur </h3>
+    <form >
 
-    <div>
+    <div class="form-group">
         <label>
-            nom
+            Nom:
         </label>
-        <input id="nom" type="text" formControlName="nom">
+        <input id="nom" class="form-control" type="text" name="nom" [(ngModel)]="currentUser.nom">
       </div>
 
-      <div>
+      <div class="form-group">
         <label>
-            prenom
+            Prenom:
         </label>
-        <input id="prenom" type="text" formControlName="prenom">
+        <input id="prenom" class="form-control" type="text" name="prenom" [(ngModel)]="currentUser.prenom">
       </div>
 
-      <!-- <div>
-          <ul *ngFor="let r of currentUser.roles">
-              <li>{{r.role}}</li>
-          </ul>
-      </div> -->
-      <div class="drop-container">
-        
-             <ng-multiselect-dropdown formControlName="roles"
+    
+      <div class="form-group drop-container mt-4" >
+             <ng-multiselect-dropdown 
            [placeholder]="''"
            [settings]="dropdownSettings"
            [data]="roles"
            (onSelect)="onItemSelect($event)"
+           [(ngModel)]="currentUser.roles"
+           [ngModelOptions]="{standalone: true}"
            >
-           </ng-multiselect-dropdown>
-         
-           
+           </ng-multiselect-dropdown> 
          </div>
 
+         <div class="form-group mt-4"> 
 
-         <div class="form-group">
-            <label>File Upload  </label>
-                <input type="file" accept="image/*" (change)="onSelectFile($event)">
-                <img [src]="imgURL" height="200" *ngIf="imgURL">
-        </div>
-        <button class="button" type="submit">modifier</button>
-        <button class="button" routerLink="/utilisateurs">retour</button>
-    </form>
+        <button class="btn btn-outline-success" type="submit" (click)="updateData()"><i class="fa fa-database"></i> modifier</button>
+        <button class="btn btn-outline-danger" routerLink="/utilisateurs"><i class="fa fa-arrow-left" aria-hidden="true"></i>retour</button>
+      </div>
+      </form>
 </div>

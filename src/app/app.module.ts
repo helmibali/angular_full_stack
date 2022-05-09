@@ -34,6 +34,10 @@ import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { FiltreComponent } from './ui/filtre/filtre.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AddModeleComponent } from './pages/modele/add-modele/add-modele.component';
+import { UpdateImageComponent } from './pages/user/update-image/update-image.component';
+import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ListContactComponent } from './pages/list-contact/list-contact.component';
 
 
 
@@ -67,7 +71,11 @@ import { AddModeleComponent } from './pages/modele/add-modele/add-modele.compone
     TestComponent,
     UpdateUserComponent,
     FiltreComponent,
-    AddModeleComponent
+    AddModeleComponent,
+    UpdateImageComponent,
+    UpdatePasswordComponent,
+    ContactComponent,
+    ListContactComponent
     
     
   ],

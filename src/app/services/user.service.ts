@@ -40,4 +40,13 @@ export class UserService {
     return this.http.put(`${'/api/user'}/${user_id}`, formData);
   }
 
+  updateRole(u:User,user_id:number): Observable<User> {
+    return this.http.put<User>(`${'/api/user'}/${user_id}`, u, httpOPtions);
+  }
+updateImageUser(formData:FormData , user_id):Observable<any> {
+  return this.http.put(`${'/api/userImg'}/${user_id}`, formData)
+}
+updateImagePw(formData:FormData , user_id):Observable<any> {
+  return this.http.put(`${'/api/userPw'}/${user_id}`, formData)
+}
 }

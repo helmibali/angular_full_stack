@@ -20,7 +20,19 @@
 </li>
 
 <li class="nav-item">
- <a class="nav-link"  routerLink="/nos-produits">Contact</a>
+    <a class="nav-link"  routerLink="/nos-produits">Nos Partenaires</a>
+   </li>
+
+   <li class="nav-item">
+    <a class="nav-link"  routerLink="/nos-produits">Question/Réponse</a>
+   </li>
+
+   <li class="nav-item">
+    <a class="nav-link"  routerLink="/nos-produits">Blog</a>
+   </li>
+
+<li class="nav-item">
+ <a class="nav-link"  routerLink="/contact">Contact</a>
 </li>
 
 
@@ -32,7 +44,7 @@
     <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/inscription">
         <i class="fa fa-user-plus"></i> &nbsp;Inscription</a></li>
     <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/login">
-        <i class="fa fa-user"></i> &nbsp;Connexion</a></li>
+        <i class="fa fa-sign-in"></i> &nbsp;Connexion</a></li>
     <!-- <li><a *ngIf="authService.isloggedIn" (click)="logout()" class="nav-link" routerLink="/login">
         <i class="fa fa-user"></i> &nbsp;deconnexion</a></li> -->
         
@@ -47,16 +59,22 @@
                   
                         <button class="dropdown-item" type="button">
                             <a *ngIf="authService.isAdmin()" class="user_options" routerLink="/produits">
-                                <i class="fa fa-user"></i> &nbsp;Dashboard</a>
+                                <i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
                             </button>
+                            <button class="dropdown-item" type="button">
+                                <a *ngIf="authService.isloggedIn" class="user_options" routerLink="/update-password">
+                                    <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a>
+                                </button>
 
               <button class="dropdown-item" type="button">
                 <a *ngIf="authService.isloggedIn" (click)="logout()" class="user_options" routerLink="/login">
-                    <i class="fa fa-user"></i> &nbsp;deconnexion</a>
+                    <i class="fa fa-sign-out"></i> &nbsp;deconnexion</a>
                 </button>
                 
             </div>
           </div>
+
+          
         
         
 

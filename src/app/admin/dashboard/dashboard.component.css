@@ -1,6 +1,12 @@
 body {
     font-size: .875rem;
   }
+
+  .dropdown
+    {
+        position: relative;
+        margin-right: 100px;
+    }
   
   .feather {
     width: 16px;
