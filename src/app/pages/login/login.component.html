@@ -4,6 +4,11 @@
      <div class="container mt-5 card shadow">
         <div class="row justify-content-md-center">
         <div class="col-md-4">
+        
+         
+         <div class="alert alert-danger" *ngIf=" errTXT != '' ">
+            {{ errTXT }}
+         </div>
         <form >
         <div class="form-group mt-5" >
 
@@ -20,8 +25,11 @@
         <div class="row justify-content-md-center">
         <button type="button" (click)="onLoggedin()"
         class="btn btn-outline-success"><i class="fa fa-sign-in"></i>&nbsp; Connexion</button> 
+    
         </div>
-
+        <div class="alert alert-danger" *ngIf=" errTXT != '' ">
+         {{ errTXT }}
+      </div>
         <div class="row justify-content-md-center">
          <a type="button" routerLink="/inscription"
          class="btn btn-outline-secondary mt-1 mb-5"><i class="fa fa-user-plus"></i> &nbsp;créer un compte</a>

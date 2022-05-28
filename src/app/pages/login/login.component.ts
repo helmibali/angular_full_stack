@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/model/user.model';
+import { JwtClientService } from 'src/app/services/jwt-client.service';
 
 
 @Component({
@@ -11,9 +12,13 @@ import { User } from 'src/app/model/user.model';
 })
 export class LoginComponent implements OnInit {
 user = new User();
+err:number = 0;
 erreur=0;
+isLoading:boolean = false;
+errTXT:string ='';
   constructor(private authService:AuthService,
-              private router:Router) {}
+              private router:Router,
+              ) {}
 
 
 
@@ -21,7 +26,7 @@ erreur=0;
 
 onLoggedin()
 {
-  this.authService.getUserFromDB(this.user.username).subscribe((usr:User)=>{
+  this.authService.getUserFromDB(this.user.username).subscribe(usr=>{
     if(usr.password == this.user.password)
   {
     this.authService.signIn(usr);
@@ -29,7 +34,13 @@ onLoggedin()
   }
   else
   this.erreur=1;
-  },(err)=>console.log(err));
+  },
+  
+  (err)=>{
+    this.err=1;
+    console.log(err);
+  }
+  );
     
 
     

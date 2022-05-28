@@ -38,6 +38,10 @@ import { UpdateImageComponent } from './pages/user/update-image/update-image.com
 import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ListContactComponent } from './pages/list-contact/list-contact.component';
+import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-front/ajouter-produit-front.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { ActualitesComponent } from './pages/actualites/actualites.component';
+import { DarkModeComponent } from './ui/dark-mode/dark-mode.component';
 
 
 
@@ -75,7 +79,11 @@ import { ListContactComponent } from './pages/list-contact/list-contact.componen
     UpdateImageComponent,
     UpdatePasswordComponent,
     ContactComponent,
-    ListContactComponent
+    ListContactComponent,
+    AjouterProduitFrontComponent,
+    BlogComponent,
+    ActualitesComponent,
+    DarkModeComponent
     
     
   ],

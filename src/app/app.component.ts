@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   title = 'Shop';
+  darkModeEnabled:boolean = false;
  constructor(public authService:AuthService,
               private router: Router){}
 
@@ -22,5 +23,9 @@ export class AppComponent {
   else
   this.authService.setLoggedUserFromLocalStorage(loggedUser);
  }
+
+ switch(){
+  this.darkModeEnabled = ! this.darkModeEnabled;
+}
 }
 

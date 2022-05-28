@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -15,20 +16,18 @@
 <a class="nav-link" routerLink="/" >Acceill</a>
 </li>
 
-<li class="nav-item">
-<a class="nav-link"  routerLink="/nos-produits">Nos Produits</a>
-</li>
+
 
 <li class="nav-item">
-    <a class="nav-link"  routerLink="/nos-produits">Nos Partenaires</a>
+    <a class="nav-link"  routerLink="/">Nos Partenaires</a>
    </li>
 
    <li class="nav-item">
-    <a class="nav-link"  routerLink="/nos-produits">Question/Réponse</a>
+    <a class="nav-link"  routerLink="/actualites">Actualités</a>
    </li>
 
    <li class="nav-item">
-    <a class="nav-link"  routerLink="/nos-produits">Blog</a>
+    <a class="nav-link"  routerLink="/blog">Blog</a>
    </li>
 
 <li class="nav-item">
@@ -47,7 +46,18 @@
         <i class="fa fa-sign-in"></i> &nbsp;Connexion</a></li>
     <!-- <li><a *ngIf="authService.isloggedIn" (click)="logout()" class="nav-link" routerLink="/login">
         <i class="fa fa-user"></i> &nbsp;deconnexion</a></li> -->
-        
+        <div *ngIf="!authService.isloggedIn">
+        <button class="btn btn-outline-warning" type="button" routerLink="/login">
+            Publier votre annonce!
+        </button>
+        </div>
+
+        <div *ngIf="authService.isloggedIn">
+            <button class="btn btn-outline-warning mr-1" type="button" routerLink="/creer-annonce">
+                Publier votre annonce!
+            </button>
+            </div>
+            
         <div *ngIf="authService.isloggedIn" class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ authService.loggedUser}}
@@ -74,10 +84,7 @@
             </div>
           </div>
 
-          
-        
-        
-
+               
 </ul>
 </nav>
 </body>

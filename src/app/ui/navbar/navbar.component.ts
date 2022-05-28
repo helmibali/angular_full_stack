@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  title= "Mes Produits"
+  title= "Mes Produits";
+  darkModeEnabled:boolean = false;
   constructor(public authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
@@ -25,6 +26,10 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.authService.logout();
+  }
+
+  switch(){
+    this.darkModeEnabled = ! this.darkModeEnabled;
   }
 
 }

@@ -2,7 +2,9 @@ import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
+import { BlogComponent } from './pages/blog/blog.component';
 import { AddCategorieComponent } from './pages/categorie/add-categorie/add-categorie.component';
 import { ListeCategorieComponent } from './pages/categorie/liste-categorie/liste-categorie.component';
 import { UpdateCategorieComponent } from './pages/categorie/update-categorie/update-categorie.component';
@@ -18,6 +20,7 @@ import { AddModeleComponent } from './pages/modele/add-modele/add-modele.compone
 import { ListModeleComponent } from './pages/modele/list-modele/list-modele.component';
 import { NosProduitsComponent } from './pages/nos-produits/nos-produits.component';
 import { PieceComponent } from './pages/piece/piece.component';
+import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-front/ajouter-produit-front.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
@@ -55,6 +58,9 @@ const routes: Routes = [
   {path:"update-password",component:UpdatePasswordComponent},
   {path:"contact",component:ContactComponent},
   {path:"contact-liste",component:ListContactComponent},
+  {path:"creer-annonce",component:AjouterProduitFrontComponent},
+  {path:"blog",component:BlogComponent},
+  {path:"actualites",component:ActualitesComponent},
   {path:"ajouter-modele" , component:AddModeleComponent}
 
 ];

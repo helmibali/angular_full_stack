@@ -6,3 +6,13 @@
         position: relative;
         margin-right: 130px;
     }
+
+    .app{
+        height: 100vh;
+    
+    }
+    
+    .dark-mode{
+        background-color: black;
+        color: white;
+    }
