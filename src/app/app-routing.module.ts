@@ -4,6 +4,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
+import { AddArticleComponent } from './pages/article/add-article/add-article.component';
+import { ListArticleComponent } from './pages/article/list-article/list-article.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { AddCategorieComponent } from './pages/categorie/add-categorie/add-categorie.component';
 import { ListeCategorieComponent } from './pages/categorie/liste-categorie/liste-categorie.component';
@@ -31,6 +33,7 @@ import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.compone
 import { ProduitGuard } from './produit.guard';
 import { TestComponent } from './test/test.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
+
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -61,7 +64,9 @@ const routes: Routes = [
   {path:"creer-annonce",component:AjouterProduitFrontComponent},
   {path:"blog",component:BlogComponent},
   {path:"actualites",component:ActualitesComponent},
-  {path:"ajouter-modele" , component:AddModeleComponent}
+  {path:"ajouter-modele" , component:AddModeleComponent},
+  {path:"articles",component:ListArticleComponent},
+  {path:"ajouter-article",component:AddArticleComponent}
 
 ];
 

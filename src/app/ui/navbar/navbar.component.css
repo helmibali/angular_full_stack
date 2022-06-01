@@ -7,12 +7,9 @@
         margin-right: 130px;
     }
 
-    .app{
-        height: 100vh;
-    
-    }
-    
-    .dark-mode{
-        background-color: black;
-        color: white;
-    }
+/* nav{
+    position: fixed;
+    top: 0;
+    z-index:999999999 ;
+    width: 100%;
+} */

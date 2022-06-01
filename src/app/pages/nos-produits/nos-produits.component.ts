@@ -16,6 +16,7 @@ import { ModeleService } from 'src/app/services/modele.service';
 })
 export class NosProduitsComponent implements OnInit {
   term;
+  p:number=1;
   categories:Categorie[];
   marques:any[];
   produit:Produit;

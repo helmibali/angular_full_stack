@@ -15,6 +15,7 @@ export class ProduitsComponent implements OnInit {
   produits: Produit[];
   modeles: Modele[];
   marque:Marque;
+  p:number=1;
   constructor(private produitService : ProduitService,
               private router : Router,
               public authService:AuthService) {

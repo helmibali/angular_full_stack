@@ -42,6 +42,13 @@ import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-f
 import { BlogComponent } from './pages/blog/blog.component';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { DarkModeComponent } from './ui/dark-mode/dark-mode.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ListArticleComponent } from './pages/article/list-article/list-article.component';
+import { AddArticleComponent } from './pages/article/add-article/add-article.component';
+import { UpdateArticleComponent } from './pages/article/update-article/update-article.component';
+import { CommentComponent } from './pages/comment/comment.component';
+import { ArticleComponent } from './pages/article/article.component';
+
 
 
 
@@ -83,7 +90,13 @@ import { DarkModeComponent } from './ui/dark-mode/dark-mode.component';
     AjouterProduitFrontComponent,
     BlogComponent,
     ActualitesComponent,
-    DarkModeComponent
+    DarkModeComponent,
+    ListArticleComponent,
+    AddArticleComponent,
+    UpdateArticleComponent,
+    CommentComponent,
+    ArticleComponent
+   
     
     
   ],
@@ -94,7 +107,8 @@ import { DarkModeComponent } from './ui/dark-mode/dark-mode.component';
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
