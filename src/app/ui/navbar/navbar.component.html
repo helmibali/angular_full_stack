@@ -22,12 +22,12 @@
     <a class="nav-link"  routerLink="/">Nos Partenaires</a>
    </li>
 
-   <li class="nav-item">
+   <!-- <li class="nav-item">
     <a class="nav-link"  routerLink="/actualites">Actualités</a>
-   </li>
+   </li> -->
 
    <li class="nav-item">
-    <a class="nav-link"  routerLink="/blog">Blog</a>
+    <a class="nav-link"  routerLink="/actualite">Actualités</a>
    </li>
 
 <li class="nav-item">
@@ -40,6 +40,10 @@
 </ul>
 <ul class="navbar-nav ml-auto" >
     <!-- <li><a class="nav-link">{{ authService.loggedUser}}</a></li> -->
+    <li>
+        <button class="btn btn-outline-success mr-1" type="button" routerLink="/creer-annonce">
+            Proposez vos services!
+        </button></li>
     <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/inscription">
         <i class="fa fa-user-plus"></i> &nbsp;Inscription</a></li>
     <li><a *ngIf="!authService.isloggedIn" class="nav-link" routerLink="/login">
@@ -59,9 +63,14 @@
             </div>
             
         <div *ngIf="authService.isloggedIn" class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ authService.loggedUser}}
-            </button>
+            
+            <a  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="card-img-top img-responsive rounded-circle image-user"
+                src = "{{'/api/ImgUser1/'+authService.loggedUser}}" 
+                style = "height :40px;width:40px"
+               alt="">
+   
+            </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               
             

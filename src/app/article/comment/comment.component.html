@@ -1,0 +1,58 @@
+<div class="mt-1 coomment">
+<img class="card-img-top img-responsive rounded-circle image-user"
+    src = "{{'/api/ImgUser/'+cmt.user.user_id}}" 
+    style = "height :38px;width:22px"
+   alt="">
+<div class="commentaire p-1 card">
+  <div class="user">
+    <p  style="font-weight:bold;"> {{cmt.user.prenom}} {{cmt.user.nom}}:  </p>
+  </div> 
+  <div class="text">
+    <p>  {{cmt.text}}</p>
+  
+  </div>
+
+</div><br/>
+<small>{{cmt.dateComment | date:'short'}}</small>
+
+
+<div>
+    <!-- <div *ngIf="canReply"
+     (click)="setActiveComment.emit({ id: cmt.id, type: activeCommentType.replying })"
+       >Répondre</div> -->
+    <div *ngIf="canEdit"
+    (click)="setActiveComment.emit({ id: cmt.id, type: activeCommentType.editing })"
+    >Modifier</div>
+    <div
+     *ngIf="canDelete"
+     (click)="deleteComment.emit(cmt.id)"
+     >supprimer</div>
+     <!-- <div class="replies" *ngIf="replies.length > 0">
+     reply
+      <comment 
+      *ngFor="let reply of a.replies"
+      [comment]="reply"
+      (setActiveComment)="setActiveComment.emit($event)"
+      [activeComment]="a.activeComment"
+      [parentId]="cmt.id"
+      [replies]="[]"
+    ></comment>
+      </div> -->
+  </div>
+
+  <!-- <comment-form
+*ngIf="isReplying()"
+submitLabel="Répond"
+(handleSubmit)="addComment.emit({
+   text: $event,
+   articleId: a.id, 
+   parentId: replyId
+ })"
+></comment-form> -->
+
+ 
+</div>
+
+
+
+  

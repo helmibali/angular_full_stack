@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
@@ -17,12 +18,14 @@ export class AddArticleComponent implements OnInit {
     public articleService:ArticleService,
     private router:Router,
     private formBuilder : FormBuilder,
+    private authService : AuthService,
   ) { }
   initForm(){
     this.articleService.dataForm = this.formBuilder.group({
       title:'',
       text:'',
       dateCreation:Date.now(),
+      user:this.authService.loggedUser,
     })
   }
 

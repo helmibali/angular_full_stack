@@ -1,6 +1,9 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ArtComponent } from './article/art/art.component';
+import { ArticleComponent } from './article/article/article.component';
+import { CommentsComponent } from './article/comments/comments.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
@@ -62,7 +65,7 @@ const routes: Routes = [
   {path:"contact",component:ContactComponent},
   {path:"contact-liste",component:ListContactComponent},
   {path:"creer-annonce",component:AjouterProduitFrontComponent},
-  {path:"blog",component:BlogComponent},
+  {path:"actualite",component:ArtComponent},
   {path:"actualites",component:ActualitesComponent},
   {path:"ajouter-modele" , component:AddModeleComponent},
   {path:"articles",component:ListArticleComponent},

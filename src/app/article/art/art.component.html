@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4 col-6" style="margin:auto ;"  *ngFor="let a of articles">
+    <div>
+        <img class="card-img-top img-responsive rounded-circle"
+        src = "{{'api/ImgUser/'+a.user.user_id}}" 
+        style = "height :70px;width:35px;"
+       alt="">
+
+       <div style="font-weight : bold ;">{{a.user.prenom}} {{a.user.nom}}</div>
+       <p class="card-text" style="margin:auto ;"><small class="text-muted">{{a.dateCreation | date:'medium'}}</small></p>
+    </div>
+   
+      <div class="card shadow" style="margin:auto ;" >
+        <div class="card-body" style="margin:auto ;">
+          <h5 class="card-title" style="margin:auto ;">{{a.title}}</h5>
+          <p class="card-text" style="margin:auto ;">{{a.text}}  {{a.user.user_id}} </p>
+          <p class="card-text" style="margin:auto ;"><small class="text-muted">{{a.dateCreation | date:'medium'}}</small></p>
+        </div>
+        <img class="card-img-top img-responsive"
+            src = "{{'api/imga/'+a.id}}" 
+            style = "height :500px;width:350px;  margin:auto ;"
+           alt="">
+      </div>
+
+      <app-comments [a] = "a"></app-comments>
+   
+</div>

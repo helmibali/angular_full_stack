@@ -33,17 +33,21 @@ apiURLall: string = '/api/users/liste';
   getUserslist(){
     return  this.http.get(this.apiURLall);
   }
-
+  setLoggedUserFromLocalStorage(login : string) {
+    this.loggedUser = login;
+    this.isloggedIn = true;
+    this.getUserRoles(login);
+    }
   signIn(user:User)
   {
     this.loggedUser=user.username;
-    this.loggedUserId=user.user_id;
-    this.loggedUserPassword=user.password;
     this.isloggedIn=true;
     this.roles=user.roles;
     localStorage.setItem('loggedUser',this.loggedUser);
+ 
     localStorage.setItem('isloggedIn',String(this.isloggedIn));
   }
+
 
   isAdmin():Boolean{
     let admin: Boolean = false;
@@ -79,11 +83,7 @@ apiURLall: string = '/api/users/liste';
 
 
 
-    setLoggedUserFromLocalStorage(login : string) {
-      this.loggedUser = login;
-      this.isloggedIn = true;
-      this.getUserRoles(login);
-      }
+  
 
     
     

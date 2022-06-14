@@ -1,9 +1,12 @@
-import { Comment } from "./comment.model";
+import { Cmt } from "./cmt.model";
+import { User } from "./user.model";
+
 
 export class Article {
     id:number;
     title:string;
     text:string;
     dateCreation:Date;
-    comments:Comment[];
+    comments:Cmt[];
+    user:User;
 }

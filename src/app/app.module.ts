@@ -46,8 +46,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ListArticleComponent } from './pages/article/list-article/list-article.component';
 import { AddArticleComponent } from './pages/article/add-article/add-article.component';
 import { UpdateArticleComponent } from './pages/article/update-article/update-article.component';
-import { CommentComponent } from './pages/comment/comment.component';
-import { ArticleComponent } from './pages/article/article.component';
+import { CommentsComponent } from './article/comments/comments.component';
+import { CommentComponent } from './article/comment/comment.component';
+import { ArtComponent } from './article/art/art.component';
+import { CommonModule } from '@angular/common';
+import { FormCommentComponent } from './article/form-comment/form-comment.component';
+import { CreateArticleComponent } from './article/create-article/create-article.component';
+
 
 
 
@@ -94,8 +99,12 @@ import { ArticleComponent } from './pages/article/article.component';
     ListArticleComponent,
     AddArticleComponent,
     UpdateArticleComponent,
+    CommentsComponent,
     CommentComponent,
-    ArticleComponent
+    ArtComponent,
+    FormCommentComponent,
+    CreateArticleComponent,
+    
    
     
     
@@ -108,7 +117,9 @@ import { ArticleComponent } from './pages/article/article.component';
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CommonModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -59,7 +59,7 @@ export class UpdateProduitComponent implements OnInit {
         });
       });
             
-        console.log(this.currentProduit)
+       // console.log(this.currentProduit)
 
         this.dropdownSettings = {
           singleSelection: false,
