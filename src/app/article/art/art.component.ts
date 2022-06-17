@@ -18,7 +18,15 @@ articles:Article[];
       this.articles=a;
     })
   }
+ 
 
+articlesBydate(): Article[] {
+  return this.articles
+    .sort(
+      (a, b) =>
+        new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime()
+   );
+}
   
 
 }

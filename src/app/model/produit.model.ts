@@ -8,16 +8,5 @@ export class Produit {
     dateCreation : Date ;
      modeles : Modele[];
      categorie :Categorie;
-
-
-//   constructor(idProduit:number, nomProduit:string,prixProduit:number, dateCreation : Date, modeles : Modele[],categorie : Categorie){
-//       this.idProduit = idProduit;
-//       this.nomProduit = nomProduit;
-//       this.prixProduit = prixProduit;
-//       this.dateCreation = dateCreation;
-//       this.categorie = categorie;
-//       this.modeles = modeles;
-//   };
-
-
+     user:string;
 }

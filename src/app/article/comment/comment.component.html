@@ -26,7 +26,8 @@
     <div
      *ngIf="canDelete"
      (click)="deleteComment.emit(cmt.id)"
-     >supprimer</div>
+     ><td><a>
+      <i class="fa fa-trash"></i></a></td></div>
      <!-- <div class="replies" *ngIf="replies.length > 0">
      reply
       <comment 

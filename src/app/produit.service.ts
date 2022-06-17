@@ -70,6 +70,16 @@ listeProdduitsByModeleAndCategorie(id_mod:number,id_cat:number):Observable <Prod
   return this.http.get<Produit[]>(url);
 }
 
+listeProdduitsByModeleAndCategorieAndGouvernorat(id_mod:number,id_cat:number,id_gouvernorat:number):Observable <Produit[]>{
+  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}`;
+  return this.http.get<Produit[]>(url);
+}
+
+listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(id_mod:number,id_cat:number,id_gouvernorat:number,id_delegation):Observable <Produit[]>{
+  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
+  return this.http.get<Produit[]>(url);
+}
+
 listeCategories():Observable<Categorie[]>{
   
   return this.http.get<Categorie[]>('/api/categorie/liste');

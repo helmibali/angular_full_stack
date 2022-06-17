@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie.model';
+import { Delegation } from 'src/app/model/delegation.model';
+import { Gouvernorat } from 'src/app/model/gouvernorat.model';
 import { Marque } from 'src/app/model/marque.model';
 import { Modele } from 'src/app/model/modele.model';
 import { Produit } from 'src/app/model/produit.model';
 import { ProduitService } from 'src/app/produit.service';
 import { CatService } from 'src/app/services/cat.service';
+import { DelegationService } from 'src/app/services/delegation.service';
+import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
 
@@ -22,16 +26,25 @@ export class NosProduitsComponent implements OnInit {
   produit:Produit;
   produits:Produit[];
   modeles:any[];
+  modelesByMarque:any[];
   modele:Modele;
+  gouvernourat:Gouvernorat;
+  gouvernorats:Gouvernorat[];
+  delegations:Delegation[];
+  delegationsByGov:Delegation[];
   produitsCategorie: Produit[];
   selectedMarque: any = {id:0, marqueLibelle:''};
+  selectedGouvernorat:any={id:0,libelle:""};
   selectedCategorie: any = {id:0, nomCategorie:''};
   selectedModele: any = {id:0, libelleModele:''};
+  selectedDelegation: any = {id:0,libelle:''};
   constructor(
     private catService : CatService,
     private produitService : ProduitService,
     private marqueService : MarqueService,
     private modeleService : ModeleService,
+    private govService : GouvernoratService,
+    private delegationService : DelegationService,
   ) { }
 
   ngOnInit(): void {
@@ -39,9 +52,26 @@ export class NosProduitsComponent implements OnInit {
     this.marquesList();
     this.modeleList();
     this.produitList();
+    this.GouvernoratsList();
+    this.DelegationsList();
     this.onSelect(this.selectedMarque.id);
+    this.onSelectGov(this.selectedGouvernorat.id);
   
    
+  }
+
+  GouvernoratsList(){
+    this.govService.listeGouvernorats().subscribe(g=>{
+    this.gouvernorats = g;
+    })
+  }
+
+  DelegationsList(){
+    this.delegationService.ListeDelegation().subscribe(d=>{
+      console.log(d)
+      this.delegations= d;
+    })
+
   }
 
   PrduitsCategorieList(id:number){
@@ -81,48 +111,75 @@ modeleList(){
 
 
 onSelect(e){
-  console.log(e.target.value);
-
   this.modeleService.getAllModelesByMarque_id(e.target.value).subscribe(data=>{
-    this.modeles = data;
-  })
+    this.modelesByMarque = data;
+  });
+  this.selectedMarque.id = e.target.value;
+}
+
+onSelectGov(e){
+  console.log(e.target.value);
+  this.delegationService.ListDelegationByGouvernourat_id(e.target.value).subscribe(data=>{
+    this.delegationsByGov = data;
+    
+  });
+  this.selectedGouvernorat.id = e.target.value;
+
 }
 
 onSelectByMod(e){
   console.log(e.target.value);
-  this.selectedModele.id=e.target.value;
-  // this.produitService.listeProdduitsByModele(e.target.value).subscribe(data=>{
-  //   this.produits = data;
-  // })
-  
+  this.selectedModele.id=e.target.value;  
 }
 onSelectByCat(e){
-  //console.log(e.target.value);
   this.selectedCategorie.id = e.target.value;
-  // this.produitService.listeProduitsByCategorie(e.target.value).subscribe(data=>{
-  //   this.produits = data;
-  // })
+}
+
+onSelectByGouvernorat(e){
+  this.selectedGouvernorat.id = e.target.value;
+}
+
+onSelectByDelegation(e){
+  this.selectedDelegation.id = e.target.value;
 }
 
 onSubmit(){
-  if (this.selectedModele.id==0){
+  if (this.selectedModele.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
      this.produitService.listeProduitsByCategorie(this.selectedCategorie.id).subscribe(data=>{
    this.produits = data;
   })
 }
-  else if(this.selectedCategorie.id==0){
+  else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
  this.produitService.listeProdduitsByModele(this.selectedModele.id).subscribe(data=>{
      this.produits = data;
    })
 
-  }else{
+  }else if(this.selectedGouvernorat.id==0  && this.selectedDelegation.id==0){
     this.produitService.listeProdduitsByModeleAndCategorie(this.selectedModele.id,this.selectedCategorie.id).subscribe(p=>{
       this.produits = p;
     })
 
   }
- 
+  else if(this.selectedDelegation.id==0){
+    this.produitService.listeProdduitsByModeleAndCategorieAndGouvernorat(this.selectedModele.id,this.selectedCategorie.id,this.selectedGouvernorat.id).subscribe(p=>{
+      this.produits = p;
+    })
 
+  }
 
+  else{
+    this.produitService.listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(this.selectedModele.id,this.selectedCategorie.id,this.selectedGouvernorat.id,this.selectedDelegation.id).subscribe(p=>{
+      this.produits = p;
+    })
+
+  }
+}
+
+produitsByDate(): Produit[] {
+  return this.produits
+    .sort(
+      (a, b) =>
+        new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime()
+   );
 }
 }

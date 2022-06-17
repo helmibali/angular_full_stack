@@ -31,7 +31,7 @@ export class AddProduitComponent implements OnInit {
               this.produitService.dataForm = this.formBuilder.group({
                 nomProduit:'',
                 prixProduit:null,
-                dateCreation:'',
+                dateCreation:new Date(),
                 modeles : [],
                 categorie_id:null,
               })

@@ -77,8 +77,8 @@ deleteComment(commentId: number): void {
   });
 }
 
-getRootComments():Cmt[] {
-  return this.comments.filter((comment) => comment.parentId === null);
-}
+// getRootComments():Cmt[] {
+//   return this.comments.filter((comment) => comment.parentId === null);
+// }
 
 }

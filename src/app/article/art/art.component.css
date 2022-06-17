@@ -1,0 +1,19 @@
+.root{
+    display: flex;
+ 
+}
+
+.create-article{
+    width: 25%;
+    display: flex; 
+}
+
+.articles{ 
+    width: 50%;
+    margin-bottom: 40px;
+  
+}
+
+.config{ 
+    width: 25%;  
+}

@@ -53,17 +53,18 @@
 
 
 
-.marque {
+/* .marque {
    
     width: 90%;
    
     margin-top: 10%;
 
    
-}
+} */
 
 .all{
     display: flex;
+    flex-direction: column;
     width: 100%;
 
 
@@ -71,10 +72,9 @@
 
 
 .filtre{
-    width: 15%;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
   
 
    
@@ -82,14 +82,38 @@
 }
 
 .produits{
-    width: 80%;
+    width: 100%;
 
 }
 
 .option{
-    flex-direction: column;
-    margin-top: 25%;
     display: flex;
-    align-items: flex-end;
+
+}
+
+.inputFiltre{
+    border: none;
+   
+    background-color: #e5e6e698;
+    /* border-radius: 50px; */
+    
+}
+
+.recherche{
+    border: none;
+    background-color: #eacac498;
+}
+
+.select{
+    width:19%;
+    text-align: center;
+    margin: auto;
+}
+.search-btn{
+    display: flex;    
+    width: 18%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
