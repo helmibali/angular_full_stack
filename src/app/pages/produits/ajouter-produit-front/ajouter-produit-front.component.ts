@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { Categorie } from 'src/app/model/categorie.model';
+import { Delegation } from 'src/app/model/delegation.model';
+import { Gouvernorat } from 'src/app/model/gouvernorat.model';
 import { Modele } from 'src/app/model/modele.model';
 import { ProduitService } from 'src/app/produit.service';
+import { DelegationService } from 'src/app/services/delegation.service';
+import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
 
@@ -14,8 +18,14 @@ import { ModeleService } from 'src/app/services/modele.service';
   styleUrls: ['./ajouter-produit-front.component.css']
 })
 export class AjouterProduitFrontComponent implements OnInit {
+  @Input()
+  addButton;
+
   selectedMarque: any = {id:0, marqueLibelle:''};
+  selectedGouvernorat: any={id:0,  libelle:''};
   modeles:Modele[];
+  gouvernorats:Gouvernorat[];
+  delegations:Delegation[];
   marques:any[];
   dropdownSettings;
   categories: Categorie[];
@@ -30,6 +40,8 @@ export class AjouterProduitFrontComponent implements OnInit {
               private modeleService : ModeleService,
               private marqueService : MarqueService,
               private authService : AuthService,
+              private gouvernoratService : GouvernoratService,
+              private delegationService : DelegationService,
   ) { }
 
   initForm(){
@@ -39,6 +51,9 @@ export class AjouterProduitFrontComponent implements OnInit {
       dateCreation:new Date(),
       modeles : [],
       categorie_id:null,
+      delegation_id:null,
+     
+     
       user:this.authService.loggedUser,
     })
   }
@@ -46,6 +61,7 @@ export class AjouterProduitFrontComponent implements OnInit {
   ngOnInit(): void {
 
     this.initForm();
+
 
     this.produitService.listeCategories().subscribe(c=>{
       this.categories=c;})
@@ -58,6 +74,19 @@ export class AjouterProduitFrontComponent implements OnInit {
 
       this.marques=m;
     })
+
+    this.gouvernoratService.listeGouvernorats().subscribe(g=>{
+      this.gouvernorats=g;
+    })
+
+    // this.delegationService.ListeDelegation().subscribe(d=>{
+    //   this.delegations=d
+    // })
+
+   
+
+
+
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
@@ -79,9 +108,9 @@ export class AjouterProduitFrontComponent implements OnInit {
       console.log(data);
       
     });
-    this.router.navigate(['/']).then(()=> {
-      window.location.reload();
-    });
+    // this.router.navigate(['/']).then(()=> {
+    //   window.location.reload();
+    // });
   }
 
   onSelectFile(event) {
@@ -128,6 +157,16 @@ onSelect(e){
   this.modeleService.getAllModelesByMarque_id(e.target.value).subscribe(data=>{
     this.modeles = data;
   })
+}
+
+onSelectGov(e){
+  console.log(e.target.value);
+  this.delegationService.ListDelegationByGouvernourat_id(e.target.value).subscribe(data=>{
+    this.delegations = data;
+    
+  });
+  this.selectedGouvernorat.id = e.target.value;
+
 }
 
 }

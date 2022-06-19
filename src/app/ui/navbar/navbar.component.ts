@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/auth.service';
 export class NavbarComponent implements OnInit {
   title= "Mes Produits";
   darkModeEnabled:boolean = false;
+  addButton:string = "Publier Votre Annonce!";
   constructor(public authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {

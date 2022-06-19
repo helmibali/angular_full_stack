@@ -52,6 +52,9 @@ import { ArtComponent } from './article/art/art.component';
 import { CommonModule } from '@angular/common';
 import { FormCommentComponent } from './article/form-comment/form-comment.component';
 import { CreateArticleComponent } from './article/create-article/create-article.component';
+import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
+import { DelegationComponent } from './admin/delegation/delegation.component';
+import { AddDelegationComponent } from './admin/add-delegation/add-delegation.component';
 
 
 
@@ -104,6 +107,9 @@ import { CreateArticleComponent } from './article/create-article/create-article.
     ArtComponent,
     FormCommentComponent,
     CreateArticleComponent,
+    GouvernoratComponent,
+    DelegationComponent,
+    AddDelegationComponent,
     
    
     

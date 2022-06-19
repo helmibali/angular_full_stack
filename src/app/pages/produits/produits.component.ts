@@ -12,6 +12,7 @@ import { ProduitService } from 'src/app/produit.service';
   styleUrls: ['./produits.component.css']
 })
 export class ProduitsComponent implements OnInit {
+  addButton:string = "Ajouter";
   produits: Produit[];
   modeles: Modele[];
   marque:Marque;

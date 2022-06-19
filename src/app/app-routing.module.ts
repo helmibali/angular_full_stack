@@ -1,6 +1,9 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddDelegationComponent } from './admin/add-delegation/add-delegation.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DelegationComponent } from './admin/delegation/delegation.component';
+import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
 import { ArtComponent } from './article/art/art.component';
 import { ArticleComponent } from './article/article/article.component';
 import { CommentsComponent } from './article/comments/comments.component';
@@ -69,7 +72,10 @@ const routes: Routes = [
   {path:"actualites",component:ActualitesComponent},
   {path:"ajouter-modele" , component:AddModeleComponent},
   {path:"articles",component:ListArticleComponent},
-  {path:"ajouter-article",component:AddArticleComponent}
+  {path:"ajouter-article",component:AddArticleComponent},
+  {path:"gouvernorat",component:GouvernoratComponent},
+  {path:"delegation",component:DelegationComponent},
+  {path:"ajouter-delegation",component:AddDelegationComponent}
 
 ];
 

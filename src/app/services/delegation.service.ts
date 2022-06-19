@@ -21,4 +21,8 @@ export class DelegationService {
   ListDelegationByGouvernourat_id(id:number):Observable<any>{
     return this.http.get<any>(`${'/api/delegations'}/${id}`)
   }
+
+  ajouterDelegation(d : Delegation):Observable<Delegation>{
+    return this.http.post<Delegation>('/api/delegation',d,httpOPtions);
+  }
 }

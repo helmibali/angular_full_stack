@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-outline-warning mt-3" id="myModalProduit"  data-toggle="modal" data-target="#produit">
-  Publier votre annonce! <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+  {{addButton}} <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
 </button>
  
 <div class="modal fade" id="produit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -46,11 +46,13 @@
 
           <div class="marque"> 
             <label>Marque :</label> 
-              <select class="custom-select custom-select-sm" [(ngModel)]="selectedMarque.id"(change)="onSelect($event)">
+              <select class="form-control"  (change)="onSelect($event)">
                 <option value="0">--Choisir marque--</option>
                 <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
               </select>
         </div> 
+
+      
 
 
         <div class="drop-container mt-3 mb-3">
@@ -64,6 +66,25 @@
             </ng-multiselect-dropdown>
             
           </div>
+<div class="localisation mb-3">
+          <div class="marque"> 
+            <label>Gouvernorat :</label> 
+              <select class="custom-select custom-select-sm" (change)="onSelectGov($event)">
+                <option value="0"></option>
+                <option *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
+              </select>
+        </div> 
+  
+        <div class="marque"> 
+          <label>Delegation :</label> 
+            <select class="custom-select custom-select-sm" formControlName="delegation_id">
+              <option value="0"></option>
+              <option *ngFor="let d of delegations" [value]="d.id">{{d.libelle}}</option>
+            </select>
+      </div> 
+    </div>
+
+
           <div class="form-group">
             <label>File Upload  </label>
                 <input type="file" accept="image/*" (change)="onSelectFile($event)">

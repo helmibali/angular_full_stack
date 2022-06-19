@@ -40,7 +40,9 @@ export class AddUserComponent implements OnInit {
     formData.append('file',this.userFile);
     this.userService.createData(formData).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['/']);
+    });
+    this.router.navigate(['produits']).then(()=> {
+      window.location.reload();
     });
   }
   onSelectFile(event) {

@@ -49,4 +49,10 @@ updateImageUser(formData:FormData , user_id):Observable<any> {
 updateImagePw(formData:FormData , user_id):Observable<any> {
   return this.http.put(`${'/api/userPw'}/${user_id}`, formData)
 }
+
+supprimerUtilisateur(id: number){
+
+  const url = `${'api/user'}/${id}`;
+  return this.http.delete(url, httpOPtions);
+  }
 }

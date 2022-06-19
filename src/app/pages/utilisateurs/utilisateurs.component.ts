@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-utilisateurs',
@@ -8,7 +11,9 @@ import { ApiService } from 'src/app/api.service';
 })
 export class UtilisateursComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,
+    private router : Router,
+    private userService: UserService) { }
 
   users:any[]=[];
   isLoading:boolean = false;
@@ -28,5 +33,17 @@ export class UtilisateursComponent implements OnInit {
       this.isLoading = false;
     })
   }
+
+  supprimerUtilisateur(u:User){
+
+    let conf = confirm("Etes vous sur ?");
+    if (conf) 
+    this.userService.supprimerUtilisateur(u.user_id).subscribe(()=>{
+      console.log("produit supprimé");
+    });
+    this.router.navigate(['/utilisateurs']).then(()=> {
+      window.location.reload();
+    });
+   }
 
 }

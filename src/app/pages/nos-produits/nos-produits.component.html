@@ -13,7 +13,7 @@
              <div class="select"> 
                 <label></label> 
                  <select  class="custom-select custom-select-lg  mb-3 inputFiltre" [(ngModel)]="selectedCategorie.id" (change)="onSelectByCat($event)">
-                <option value="0">Catégorie</option>
+                <option [value]="0">Catégorie</option>
                 <option *ngFor="let c of categories" [value]="c.id">{{c.nomCategorie}}</option>
             </select>
              </div>
@@ -21,7 +21,7 @@
             <div class="select"> 
                 <label></label> 
                  <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedMarque.id"(change)="onSelect($event)">
-                     <option value="0">Marque</option>
+                     <option [value]="0">Marque</option>
                      <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
                 </select>
             </div> 
@@ -29,7 +29,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedModele.id" (change)="onSelectByMod($event)">
-                <option value="0">Modele</option>
+                <option [value]="0">Modele</option>
                 <option *ngFor="let mod of modelesByMarque" [value]="mod.id">{{mod.libelleModele}}</option>
                 </select>
             </div>
@@ -37,7 +37,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedGouvernorat.id"(change)="onSelectGov($event)">
-                <option value="0">Gouvernourat</option>
+                <option [value]="0">Gouvernourat</option>
                 <option *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
                 </select>
             </div>
@@ -45,7 +45,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedDelegation.id" (change)="onSelectByDelegation($event)">
-                <option value="0">Délégation</option>
+                <option [value]="0">Délégation</option>
                 <option *ngFor="let d of delegationsByGov" [value]="d.id">{{d.libelle}}</option>
                 </select>
             </div>
@@ -67,7 +67,7 @@
     <div class="container px-4 px-lg-5 mt-5">
         <pagination-controls class="pagination" style="margin:auto;" (pageChange)="p =$event"></pagination-controls>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5" *ngFor="let p of produitsByDate()|filter:term | paginate: {itemsPerPage: 12, currentPage: p } ">
+            <div class="col mb-5" *ngFor="let p of produitsByDate()|filter:term | paginate: {itemsPerPage: 16, currentPage: p } ">
                 <div class="card h-100" >
                     <!-- Product image-->
                     <img class="card-img-top"
@@ -96,7 +96,7 @@
                     <small>{{p.user.prenom}} {{p.user.nom}}</small>
                     <small>{{p.dateCreation | date:'medium'}}</small>
                     <small><i class="fa fa-map-marker" aria-hidden="true"></i> 
-                        {{p.gouvernorat.libelle}} {{p.delegation.libelle}}</small>
+                        {{p.delegation.gouvernorat.libelle}}, {{p.delegation.libelle}}</small>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Plus de détail</a></div>
