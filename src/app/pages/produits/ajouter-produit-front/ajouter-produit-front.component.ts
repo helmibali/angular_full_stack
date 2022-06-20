@@ -108,9 +108,9 @@ export class AjouterProduitFrontComponent implements OnInit {
       console.log(data);
       
     });
-    // this.router.navigate(['/']).then(()=> {
-    //   window.location.reload();
-    // });
+    this.router.navigate(['/']).then(()=> {
+      window.location.reload();
+    });
   }
 
   onSelectFile(event) {

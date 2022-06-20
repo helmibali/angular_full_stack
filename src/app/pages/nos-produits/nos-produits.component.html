@@ -13,7 +13,7 @@
              <div class="select"> 
                 <label></label> 
                  <select  class="custom-select custom-select-lg  mb-3 inputFiltre" [(ngModel)]="selectedCategorie.id" (change)="onSelectByCat($event)">
-                <option [value]="0">Catégorie</option>
+                <option value="0">Catégorie</option>
                 <option *ngFor="let c of categories" [value]="c.id">{{c.nomCategorie}}</option>
             </select>
              </div>
@@ -21,7 +21,7 @@
             <div class="select"> 
                 <label></label> 
                  <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedMarque.id"(change)="onSelect($event)">
-                     <option [value]="0">Marque</option>
+                     <option value="0">Marque</option>
                      <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
                 </select>
             </div> 
@@ -29,7 +29,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedModele.id" (change)="onSelectByMod($event)">
-                <option [value]="0">Modele</option>
+                <option value="0">Modele</option>
                 <option *ngFor="let mod of modelesByMarque" [value]="mod.id">{{mod.libelleModele}}</option>
                 </select>
             </div>
@@ -37,7 +37,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedGouvernorat.id"(change)="onSelectGov($event)">
-                <option [value]="0">Gouvernourat</option>
+                <option value="0">Gouvernourat</option>
                 <option *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
                 </select>
             </div>
@@ -45,7 +45,7 @@
             <div class="select">
                 <label></label>  
                 <select class="custom-select custom-select-lg mb-3 inputFiltre" [(ngModel)]="selectedDelegation.id" (change)="onSelectByDelegation($event)">
-                <option [value]="0">Délégation</option>
+                <option value="0">Délégation</option>
                 <option *ngFor="let d of delegationsByGov" [value]="d.id">{{d.libelle}}</option>
                 </select>
             </div>

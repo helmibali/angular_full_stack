@@ -57,12 +57,17 @@ listeProduits():Observable<Produit[]>{
   
   return this.http.get<Produit[]>(this.apiURL);
 }
+ProdByModGov(id_marque,id_mod,id_gouvernorat):Observable<Produit[]>{
+const url = `${'/api/produit/modeleByGov'}/${id_marque}/${id_mod}/${id_gouvernorat}`;
+return this.http.get<Produit[]>(url);
+}
+
 listeProduitsByCategorie(id: number):Observable <Produit[]>{
   const url = `${'/api/produit_cat'}/${id}`;
   return this.http.get<Produit[]>(url);
 }
-listeProdduitsByModele(id:number):Observable <Produit[]>{
-  const url = `${'api/produit/modele'}/${id}`;
+listeProdduitsByModele(id_mod:number):Observable <Produit[]>{
+  const url = `${'api/produit/modele'}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByModeleAndCategorie(id_mod:number,id_cat:number):Observable <Produit[]>{
@@ -88,10 +93,7 @@ listeProdduitsByGouvernorat(id_gouvernorat:number):Observable <Produit[]>{
   const url = `${'/api/produit/gouvernorat'}/${id_gouvernorat}`;
   return this.http.get<Produit[]>(url);
 }
-listeProdduitsByGouvernoratAndModeles(id_gouvernorat:number,id_mod):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndModeles'}/${id_gouvernorat}/${id_mod}`;
-  return this.http.get<Produit[]>(url);
-}
+
 
 listeProdduitsByGouvernoratAndMarque(id_gouvernorat:number,id_marque:number):Observable <Produit[]>{
   const url = `${'/api/produit/gouvernoratAndMarque'}/${id_gouvernorat}/${id_marque}`;

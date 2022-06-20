@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Categorie } from 'src/app/model/categorie.model';
 import { Delegation } from 'src/app/model/delegation.model';
 import { Gouvernorat } from 'src/app/model/gouvernorat.model';
@@ -45,6 +46,7 @@ export class NosProduitsComponent implements OnInit {
     private modeleService : ModeleService,
     private govService : GouvernoratService,
     private delegationService : DelegationService,
+    private router : Router,
   ) { }
 
   ngOnInit(): void {
@@ -136,9 +138,7 @@ onSelectByCat(e){
   this.selectedCategorie.id = e.target.value;
 }
 
-onSelectByGouvernorat(e){
-  this.selectedGouvernorat.id = e.target.value;
-}
+
 
 onSelectByDelegation(e){
   this.selectedDelegation.id = e.target.value;
@@ -151,104 +151,67 @@ onSubmit(){
   })
 }
 
-else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
+
+else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0 && this.selectedModele.id==0){
   this.produitService.listeProdduitsByMarque(this.selectedMarque.id).subscribe(d=>{
 this.produits =d;
   })
-  
- 
-   }
+ }
+ else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
+  this.produitService.listeProdduitsByModele(this.selectedModele.id).subscribe(d=>{
+    this.produits=d;
+  })
+ }
 
-   else if(this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
-    this.produitService.listeProdduitsByMarqueAndCategorie(this.selectedMarque.id,this.selectedCategorie.id).subscribe(d=>{
-  this.produits =d;
-    })
-    
-   
-     }
+ else if(this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
+  this.produitService.listeProdduitsByMarqueAndCategorie(this.selectedMarque.id,this.selectedCategorie.id).subscribe(d=>{
+this.produits =d;
+  })
+  }
 
-   else if(this.selectedCategorie.id==0 &&  this.selectedDelegation.id==0){
-    this.produitService.listeProdduitsByGouvernoratAndMarque(this.selectedGouvernorat.id,this.selectedMarque.id).subscribe(d=>{
-  this.produits =d;
-    })
-    
-   
-     }
 
-     else if(this.selectedCategorie.id==0){
-      this.produitService.listeProdduitsByGouvernoratAndDelegationAndMarque(this.selectedGouvernorat.id,this.selectedMarque.id,this.selectedDelegation.id).subscribe(d=>{
-    this.produits =d;
-      })
-      
-     
-       }
-else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0 && this.selectedDelegation.id==0){
-  this.produitService.listeProdduitsByModele(this.selectedModele.id).subscribe(data=>{
-      this.produits = data;
-    })
- 
-   }
-   
-else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 && this.selectedDelegation.id==0 && this.selectedMarque.id==0){
-  this.produitService.listeProdduitsByGouvernorat(this.selectedGouvernorat.id).subscribe(data=>{
-      this.produits = data;
-    })
- 
-   }
 
-   else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 && this.selectedMarque.id==0){
-    this.produitService.listeProdduitsByGouvernoratAndDelegation(this.selectedGouvernorat.id,this.selectedDelegation.id).subscribe(data=>{
-        this.produits = data;
-      })
-   
-     }
-     else if(this.selectedCategorie.id==0 && this.selectedDelegation.id==0){
-      this.produitService.listeProdduitsByGouvernoratAndModeles(this.selectedGouvernorat.id,this.selectedModele.id).subscribe(data=>{
-          this.produits = data;
+  else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 && this.selectedDelegation.id==0 && this.selectedMarque.id==0){
+    this.produitService.listeProdduitsByGouvernorat(this.selectedGouvernorat.id).subscribe(d=>{
+      this.produits=d;
+    })
+      }
+
+      else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 && this.selectedDelegation.id==0){
+        this.produitService.listeProdduitsByGouvernoratAndMarque(this.selectedGouvernorat.id,this.selectedMarque.id).subscribe(d=>{
+          this.produits=d;
         })
-     
-       }
+          }
 
-       else if(this.selectedModele.id==0 && this.selectedDelegation.id==0 && this.selectedMarque.id==0){
-        this.produitService.listeProdduitsByGouvernoratAndCategorie(this.selectedGouvernorat.id,this.selectedCategorie.id).subscribe(data=>{
-            this.produits = data;
-          })
-       
-         }
+        
 
-         else if(this.selectedModele.id==0 && this.selectedDelegation.id==0){
-          this.produitService.listeProdduitsByGouvernoratAndModeles(this.selectedGouvernorat.id,this.selectedCategorie.id).subscribe(data=>{
-              this.produits = data;
-            })
-         
-           }
-
-           else if(this.selectedModele.id==0 && this.selectedGouvernorat.id==0 && this.selectedMarque.id==0){
-            this.produitService.listeProdduitsByDelegationAndCategorie(this.selectedDelegation.id,this.selectedCategorie.id).subscribe(data=>{
+          else if(this.selectedModele.id==0 && this.selectedDelegation.id==0 && this.selectedMarque.id==0){
+            this.produitService.listeProdduitsByGouvernoratAndCategorie(this.selectedGouvernorat.id,this.selectedCategorie.id).subscribe(data=>{
                 this.produits = data;
               })
            
              }
 
-             else if(this.selectedCategorie.id==0 && this.selectedGouvernorat.id==0){
-              this.produitService.listeProdduitsByDelegationAndModeles(this.selectedDelegation.id,this.selectedModele.id).subscribe(data=>{
-                  this.produits = data;
-                })
-             
-               }
+             else if(this.selectedCategorie.id==0 && this.selectedDelegation.id==0){
+              this.produitService.ProdByModGov(this.selectedMarque.id,this.selectedModele.id,this.selectedGouvernorat.id).subscribe(p=>{
+                this.produits=p;
+              })
+            }
+           
+            
 
- else if(this.selectedGouvernorat.id==0  && this.selectedDelegation.id==0){
-    this.produitService.listeProdduitsByModeleAndCategorie(this.selectedModele.id,this.selectedCategorie.id).subscribe(p=>{
-      this.produits = p;
-    })
-
-  }
   else if(this.selectedDelegation.id==0){
     this.produitService.listeProdduitsByModeleAndCategorieAndGouvernorat(this.selectedModele.id,this.selectedCategorie.id,this.selectedGouvernorat.id).subscribe(p=>{
       this.produits = p;
     })
 
   }
+
+  else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 && this.selectedMarque.id==0){
+    this.produitService.listeProdduitsByGouvernoratAndDelegation(this.selectedGouvernorat.id,this.selectedDelegation.id).subscribe(data=>{
+        this.produits = data;
+      })
+     }
 
   else{
     this.produitService.listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(this.selectedModele.id,this.selectedCategorie.id,this.selectedGouvernorat.id,this.selectedDelegation.id).subscribe(p=>{
