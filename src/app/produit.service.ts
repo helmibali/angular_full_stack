@@ -118,7 +118,7 @@ listeProdduitsByGouvernoratAndDelegationAndMarque(id_gouvernorat:number,id_marqu
 }
 
 
-listeProdduitsByDelegationAndModeles(id_delegation:number,id_mod):Observable <Produit[]>{
+listeProdduitsByDelegationAndModeles(id_delegation:number,id_mod:number):Observable <Produit[]>{
   const url = `${'/api/produit/delegationAndModeles'}/${id_delegation}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }

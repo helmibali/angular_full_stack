@@ -212,6 +212,24 @@ this.produits =d;
         this.produits = data;
       })
      }
+     else if(this.selectedModele.id==0  && this.selectedMarque.id==0){
+      this.produitService.listeProdduitsByDelegationAndCategorie(this.selectedDelegation.id,this.selectedCategorie.id).subscribe(data=>{
+          this.produits = data;
+        })
+     
+       }
+       
+     else if(this.selectedCategorie.id==0 && this.selectedModele.id==0 ){
+      this.produitService.listeProdduitsByGouvernoratAndDelegationAndMarque(this.selectedGouvernorat.id,this.selectedMarque.id,this.selectedDelegation.id).subscribe(d=>{
+    this.produits =d;
+      })
+    }
+
+    else if(this.selectedCategorie.id==0){
+      this.produitService.listeProdduitsByDelegationAndModeles(this.selectedDelegation.id,this.selectedModele.id).subscribe(d=>{
+    this.produits =d;
+      })
+    }
 
   else{
     this.produitService.listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(this.selectedModele.id,this.selectedCategorie.id,this.selectedGouvernorat.id,this.selectedDelegation.id).subscribe(p=>{
