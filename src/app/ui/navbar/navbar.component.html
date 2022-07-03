@@ -51,7 +51,7 @@
         <i class="fa fa-user"></i> &nbsp;deconnexion</a></li> -->
         <div *ngIf="!authService.isloggedIn">
         <button class="btn btn-outline-warning" type="button" routerLink="/login">
-            Publier votre annonce!
+             Publier votre annonce!
         </button>
         </div>
 
@@ -64,14 +64,20 @@
             </div>
             
         <div *ngIf="authService.isloggedIn" class="dropdown">
+            <button class="btn btn-light dropdown-toggle ml-1" style="font-weight:bold ;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               
+                {{user.prenom}} {{user.nom}}
+               
+              </button>
             
-            <a  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <!-- <button  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="card-img-top img-responsive rounded-circle image-user"
                 src = "{{'/api/ImgUser1/'+authService.loggedUser}}" 
                 style = "height :40px;width:40px"
                alt="">
+               {{authService.loggedUser}}
    
-            </a>
+            </button> -->
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               
             
@@ -81,6 +87,10 @@
                             <a *ngIf="authService.isAdmin()" class="user_options" routerLink="/produits">
                                 <i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
                             </button>
+                            <button class="dropdown-item" type="button">
+                                <a *ngIf="authService.isloggedIn" class="user_options" [routerLink]="['/profile',user.user_id]">
+                                    <i class="fa fa-user"></i> &nbsp;Mon profile</a>
+                                </button>
                             <button class="dropdown-item" type="button">
                                 <a *ngIf="authService.isloggedIn" class="user_options" routerLink="/update-password">
                                     <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a>

@@ -1,6 +1,7 @@
 import { Categorie } from "./categorie.model";
 import { Delegation } from "./delegation.model";
 import { Modele } from "./modele.model";
+import { User } from "./user.model";
 
 export class Produit {
     idProduit : number;
@@ -11,5 +12,5 @@ export class Produit {
      categorie :Categorie;
      delegation : Delegation;
     
-     user:string;
+     user:User;
 }

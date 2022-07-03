@@ -46,6 +46,7 @@ export class UpdateProduitComponent implements OnInit {
         this.produitService.consulterProduit(this.activatedRoute.snapshot.params.id).subscribe(p=>{
          this.currentProduit=p;
          console.log(this.currentProduit);
+  
          this.produitService.listeModele().subscribe(m=>{
           this.modeles=m;});
           this.produitService.listeCategories().subscribe(c=>{

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +11,12 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class NavbarComponent implements OnInit {
   title= "Mes Produits";
+  user:User;
   darkModeEnabled:boolean = false;
-  addButton:string = "Publier Votre Annonce!";
-  constructor(public authService:AuthService, private router:Router) { }
+  addButton:string = "Publier une Annonce";
+  constructor(public authService:AuthService,
+     private router:Router,
+     public userService: UserService) { }
 
   ngOnInit(): void {
   //    let isloggedin: string;
@@ -23,6 +28,10 @@ export class NavbarComponent implements OnInit {
   
   // else
   // this.authService.setLoggedUserFromLocalStorage(loggedUser);
+  this.userService.getUserByUsername(this.authService.loggedUser).subscribe(u=>{
+    this.user=u;
+    console.log(this.user);
+  })
   }
 
   logout(){

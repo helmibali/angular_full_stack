@@ -1,0 +1,13 @@
+.all{
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+
+.description{
+    width: 50%;
+}
+
+.image{
+    width: 50%;
+}

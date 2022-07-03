@@ -1,1 +1,45 @@
-<p>profile works!</p>
+<div class="n"><app-navbar></app-navbar></div>
+
+<div class="">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page" ><a routerLink="/"><i class="fa fa-home">  accueil</i></a></li>
+        </ol>
+      </nav>
+      <div class="all">
+      <div class="profile">
+
+        <!-- <div class="img"> -->
+          <!-- <img src="{{'/api/ImgUser/'+user.user_id}}" 
+          style="width: 150px;height: 150px;" 
+          class="card-img-top img-responsive rounded-circle image-user" 
+          alt="{{user.username}}">
+        </div>
+        <span class="">{{user.prenom}} {{user.nom}}</span>
+        <span class="">{{user.naissance | date:'mediumDate'}}</span>
+        <span class="">{{user.username}}</span>
+        <span class="">{{user.delegation.libelle}} {{user.delegation.gouvernorat.libelle}}</span> -->
+
+        <div class="card" style="width: 18rem;">
+          <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{user.prenom}} {{user.nom}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{user.naissance | date:'mediumDate'}}</li>
+            <li class="list-group-item">{{user.delegation.libelle}} {{user.delegation.gouvernorat.libelle}}</li>
+            
+          </ul>
+        
+        </div>
+
+      </div>
+      
+    <!-- <button type="button" class="btn btn-light" routerLink="/"><i class="fa fa-home"></i> accueil</button> -->
+    <div class="produits" style="border-radius: 25px;">
+      <span class="badge badge-pill badge-light" style="color:rgb(239, 74, 74)"> <h6>Annonces actives pour {{user.prenom}} {{user.nom}} ({{produits.length}})</h6>  </span>
+      <app-produits-filtred [produits]="produits" [term]="term"></app-produits-filtred>
+      
+      </div>
+</div>
+<app-footer></app-footer>

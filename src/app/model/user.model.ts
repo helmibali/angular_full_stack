@@ -1,3 +1,4 @@
+import { Delegation } from "./delegation.model";
 import { Role } from "./role.model";
 
 export class User {
@@ -8,4 +9,5 @@ export class User {
     prenom:string;
     naissance:Date;
     roles:Role[];
+    delegation:Delegation;
 }

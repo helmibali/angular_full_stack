@@ -55,6 +55,10 @@ import { CreateArticleComponent } from './article/create-article/create-article.
 import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
 import { DelegationComponent } from './admin/delegation/delegation.component';
 import { AddDelegationComponent } from './admin/add-delegation/add-delegation.component';
+import { FilterComponent } from './pages/nos-produits/filter/filter.component';
+import { ProduitsFiltredComponent } from './pages/nos-produits/produits-filtred/produits-filtred.component';
+import { ProduitByIdComponent } from './pages/nos-produits/produit-by-id/produit-by-id.component';
+import { ViewUserComponent } from './pages/view-user/view-user.component';
 
 
 
@@ -110,6 +114,10 @@ import { AddDelegationComponent } from './admin/add-delegation/add-delegation.co
     GouvernoratComponent,
     DelegationComponent,
     AddDelegationComponent,
+    FilterComponent,
+    ProduitsFiltredComponent,
+    ProduitByIdComponent,
+    ViewUserComponent,
     
    
     

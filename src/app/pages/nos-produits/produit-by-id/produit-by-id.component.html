@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page" ><a routerLink="/"><i class="fa fa-home">  accueil</i></a></li>
+        </ol>
+      </nav>
+      <div class="text-center mt-1" *ngIf="isLoading != false">
+        <div class="card shadow mb-4">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          
+      </div>
+    <!-- <button type="button" class="btn btn-light" routerLink="/"><i class="fa fa-home"></i> accueil</button> -->
+    <div class="all mt-5 mb-5" style="border-radius: 25px;">
+        <div class="description">
+          <h5 class="card-title">{{produit.nomProduit}}</h5>
+          <p class="card-text">{{produit.prixProduit}} TND</p>
+          <app-view-user [produit]="produit" ></app-view-user>
+          <!-- <a class="badge badge-primary" [routerLink]="['/profile',produit.user.user_id]">{{produit.user.prenom}} {{produit.user.nom}}</a>  -->
+          <span class="badge badge-pill badge-light">{{produit.dateCreation | date:'medium'}}</span><br/>
+          <span class="badge badge-pill badge-light mt-2" *ngFor="let m of produit.modeles">
+             <img href="#"><img class="card-img-top img-responsive"
+                src = "{{'/api/Imgarticles/'+m.marque.id}}" 
+                style = "height :40px;width:60px"
+               alt=""> {{m.libelleModele}} 
+          </span><br/>
+
+          <span class="badge badge-pill badge-light">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> 
+                        {{produit.delegation.gouvernorat.libelle}}, {{produit.delegation.libelle}}
+          </span>
+          
+        </div>
+        <div class="image">
+            <img 
+            src="{{'api/imgp/'+produit.idProduit}}"
+            style = "height :300px;width:500px;border-radius: 25px;"
+            alt="{{produit.nomProduit}}">
+        </div>
+       
+      </div>
+</div>
+<app-footer></app-footer>

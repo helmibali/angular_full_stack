@@ -26,7 +26,9 @@ import { ListMarqueComponent } from './pages/marque/list-marque/list-marque.comp
 import { UpdateMarqueComponent } from './pages/marque/update-marque/update-marque.component';
 import { AddModeleComponent } from './pages/modele/add-modele/add-modele.component';
 import { ListModeleComponent } from './pages/modele/list-modele/list-modele.component';
+import { FilterComponent } from './pages/nos-produits/filter/filter.component';
 import { NosProduitsComponent } from './pages/nos-produits/nos-produits.component';
+import { ProduitByIdComponent } from './pages/nos-produits/produit-by-id/produit-by-id.component';
 import { PieceComponent } from './pages/piece/piece.component';
 import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-front/ajouter-produit-front.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
@@ -63,6 +65,8 @@ const routes: Routes = [
   {path:"modeles",component:ListModeleComponent},
   {path:"test",component:TestComponent},
   {path:"modifier-utilisateur/:user_id" ,component:UpdateUserComponent},
+  {path:"profile/:user_id",component:ProfileComponent},
+  {path:"produit/:id" ,component:ProduitByIdComponent},
   {path:"modifier-image-utilisateur/:user_id" ,component:UpdateImageComponent},
   {path:"update-password",component:UpdatePasswordComponent},
   {path:"contact",component:ContactComponent},
@@ -75,7 +79,9 @@ const routes: Routes = [
   {path:"ajouter-article",component:AddArticleComponent},
   {path:"gouvernorat",component:GouvernoratComponent},
   {path:"delegation",component:DelegationComponent},
-  {path:"ajouter-delegation",component:AddDelegationComponent}
+  {path:"ajouter-delegation",component:AddDelegationComponent},
+  // {path:"filter/:categorie/:libelleMarque/:modele/:gov/:deleg" ,component:FilterComponent},
+  {path:"search" ,component:FilterComponent}
 
 ];
 

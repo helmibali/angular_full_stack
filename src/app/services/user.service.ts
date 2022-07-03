@@ -30,6 +30,9 @@ export class UserService {
   getUserById(user_id: number):Observable<User> {
     return this.http.get<User>(`${'/api/user'}/${user_id}`);
   }
+  getUserByUsername(username: string):Observable<User> {
+    return this.http.get<User>(`${'/api/login'}/${username}`);
+  }
   createData(formData: FormData): Observable<any> {
     return this.http.post('/api/user/add', formData);
   }

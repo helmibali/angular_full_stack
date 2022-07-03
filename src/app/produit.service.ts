@@ -66,12 +66,16 @@ listeProduitsByCategorie(id: number):Observable <Produit[]>{
   const url = `${'/api/produit_cat'}/${id}`;
   return this.http.get<Produit[]>(url);
 }
+listeProduitsByUser(user_id: number):Observable <Produit[]>{
+  const url = `${'/api/produit/user'}/${user_id}`;
+  return this.http.get<Produit[]>(url);
+}
 listeProdduitsByModele(id_mod:number):Observable <Produit[]>{
   const url = `${'api/produit/modele'}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }
-listeProdduitsByModeleAndCategorie(id_mod:number,id_cat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}`;
+listeProdduitsByModeleAndCategorieAndMarque(id_mod:number,id_cat:number,id_marque:number):Observable <Produit[]>{
+  const url = `${'/api/produit/modelebycat'}/${id_mod}/${id_cat}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
@@ -84,7 +88,7 @@ listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(id_mod:number,id_c
   const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
-listeProdduitsByGouvernoratAndDelegation(id_gouvernorat:number,id_delegation):Observable <Produit[]>{
+listeProdduitsByGouvernoratAndDelegation(id_gouvernorat:number,id_delegation:number):Observable <Produit[]>{
   const url = `${'/api/produit/delegationAndGouvernorat'}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
@@ -114,6 +118,16 @@ listeProdduitsByMarqueAndCategorie(id_marque:number, id_cat:number):Observable <
 
 listeProdduitsByGouvernoratAndDelegationAndMarque(id_gouvernorat:number,id_marque:number,id_delegation:number):Observable <Produit[]>{
   const url = `${'/api/produit/gouvernoratAndMarqueAndDelegation'}/${id_gouvernorat}/${id_marque}/${id_delegation}`;
+  return this.http.get<Produit[]>(url);
+}
+
+listeProdduitsByGouvernoratAndDelegationAndMarqueAndCategorie(id_gouvernorat:number,id_marque:number,id_delegation:number,id_cat:number):Observable <Produit[]>{
+  const url = `${'/api/produit/gouvernoratAndMarqueAndDelegationAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_delegation}/${id_cat}`;
+  return this.http.get<Produit[]>(url);
+}
+
+listeProdduitsByGouvernoratAndMarqueAndCategorie(id_gouvernorat:number,id_marque:number,id_cat:number):Observable <Produit[]>{
+  const url = `${'/api/produit/gouvernoratAndMarqueAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
