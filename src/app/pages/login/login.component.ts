@@ -34,6 +34,7 @@ onLoggedin()
   }
   else
   this.erreur=1;
+  this.errTXT="login ou mot de passe invalid";
   },
   
   (err)=>{

@@ -10,4 +10,5 @@ export class User {
     naissance:Date;
     roles:Role[];
     delegation:Delegation;
+    telephone:string;
 }

@@ -15,23 +15,34 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{  produit.nomProduit }}</h5>
                             <!-- Product price-->
-                            {{produit.prixProduit}} TND
-                        </div>
+                            <span class="badge badge-pill badge-light">
+                                  {{produit.prixProduit}} TND
+                                </span>
+                                <br>
 
-                        <span class="badge badge-pill badge-light mt-2" *ngFor="let m of produit.modeles">
+                                <span class="badge badge-pill badge-light">
+                                    <i class="fa fa-list-alt" aria-hidden="true"></i>  {{produit.categorie.nomCategorie}}  
+                                </span>
+                        </div>
+                        
+                     
+                        <span class="badge badge-pill badge-light mt-2 text-center" style = "margin: auto;"*ngFor="let m of produit.modeles">
                             <img href="#"><img class="card-img-top img-responsive"
                                src = "{{'/api/Imgarticles/'+m.marque.id}}" 
-                               style = "height :40px;width:60px"
+                               style = "height :40px;width:60px;"
                               alt=""> {{m.libelleModele}} 
                          </span>  
                     </div>
                     <a class="badge badge-primary ml-5" [routerLink]="['/profile',produit.user.user_id]" style="width:30%;">{{produit.user.prenom}} {{produit.user.nom}} </a>
-                   
-                   
-
+                    <span class="badge badge-pill badge-light">
+                    <i class="fa fa-phone"> {{produit.user.telephone}}</i>
+                    </span>
 
  
-                    <span class="badge badge-pill badge-light">{{produit.dateCreation | date:'medium'}}</span>
+                    <span class="badge badge-pill badge-light">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        {{produit.dateCreation | date:'HH:mm'}} à {{produit.dateCreation | date:'dd-MM-yyyy'}}        
+                    </span>
                     
 
                         <span class="badge badge-pill badge-light">

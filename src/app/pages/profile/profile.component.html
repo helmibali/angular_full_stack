@@ -20,15 +20,15 @@
         <span class="">{{user.username}}</span>
         <span class="">{{user.delegation.libelle}} {{user.delegation.gouvernorat.libelle}}</span> -->
 
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem;position:sticky;top:85px;">
           <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{user.prenom}} {{user.nom}}</h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{user.naissance | date:'mediumDate'}}</li>
-            <li class="list-group-item">{{user.delegation.libelle}} {{user.delegation.gouvernorat.libelle}}</li>
-            
+            <li class="list-group-item">{{user.naissance | date:'dd-MM-yyyy'}}</li>
+            <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"> {{user.delegation.libelle}},{{user.delegation.gouvernorat.libelle}}</i></li>
+            <li class="list-group-item"><i class="fa fa-phone"> {{user.telephone}}</i></li>
           </ul>
         
         </div>

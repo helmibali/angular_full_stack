@@ -33,9 +33,31 @@
         <input type="date" class="form-control" formControlName="naissance" id="naissance">
       </div>
 
+      <div class="localisation mb-3">
+        <div class="marque"> 
+          <label>Gouvernorat :</label> 
+            <select class="custom-select custom-select-sm" (change)="onSelectGov($event)">
+              <option value="0"></option>
+              <option *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
+            </select>
+      </div> 
+
+      <div class="marque"> 
+        <label>Delegation :</label> 
+          <select class="custom-select custom-select-sm" formControlName="delegation_id">
+            <option value="0"></option>
+            <option *ngFor="let d of delegations" [value]="d.id">{{d.libelle}}</option>
+          </select>
+    </div> 
+  </div>
+
       <div class="form-group">
         <label>Email: </label>
         <input type="email" class="form-control" formControlName="username" id="username">
+      </div>
+      <div class="form-group">
+        <label>téléphone: </label>
+        <input type="email" class="form-control" formControlName="telephone" id="telephone">
       </div>
       <div class="form-group">
         <label>Mot de passe: </label>

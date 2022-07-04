@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Delegation } from 'src/app/model/delegation.model';
+import { Gouvernorat } from 'src/app/model/gouvernorat.model';
+import { DelegationService } from 'src/app/services/delegation.service';
+import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,13 +14,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddUserComponent implements OnInit {
   userFile ;
+  selectedGouvernorat: any={id:0,  libelle:''};
   imgURL: any;
   public imagePath;
   public message: string;
+  gouvernorats:Gouvernorat[];
+  delegations:Delegation[];
   constructor(
     public userService: UserService,
     public fb:FormBuilder,
     private router:Router,
+    private gouvernoratService : GouvernoratService,
+    private delegationService : DelegationService,
 
   ) { }
   infoForm(){
@@ -25,13 +34,18 @@ export class AddUserComponent implements OnInit {
       prenom:'',
       nom:'',
       naissance:'',
+      telephone:'',
       username:'',
       password:'',
+      delegation_id:null,
       });
   }
 
   ngOnInit(): void {
     this.infoForm();
+    this.gouvernoratService.listeGouvernorats().subscribe(g=>{
+      this.gouvernorats=g;
+    })
   }
   addData(){
     const formData = new FormData();
@@ -45,6 +59,17 @@ export class AddUserComponent implements OnInit {
       window.location.reload();
     });
   }
+
+  onSelectGov(e){
+    console.log(e.target.value);
+    this.delegationService.ListDelegationByGouvernourat_id(e.target.value).subscribe(data=>{
+      this.delegations = data;
+      
+    });
+    this.selectedGouvernorat.id = e.target.value;
+  
+  }
+
   onSelectFile(event) {
     if (event.target.files.length > 0)
     {
