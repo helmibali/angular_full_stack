@@ -48,8 +48,7 @@ export class UpdateUserComponent implements OnInit {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All'
   };
-}
-    
+}     
 
 
   updateData(){

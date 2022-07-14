@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/model/user.model';
@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  term;
   title= "Mes Produits";
   user:User;
   darkModeEnabled:boolean = false;
@@ -40,6 +41,12 @@ export class NavbarComponent implements OnInit {
 
   switch(){
     this.darkModeEnabled = ! this.darkModeEnabled;
+  }
+
+  viewProfile(){
+    this.router.navigate(['/profile',this.user.user_id]).then(()=> {
+      window.location.reload();
+    });
   }
 
 }

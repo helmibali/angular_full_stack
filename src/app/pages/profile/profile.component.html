@@ -1,28 +1,60 @@
 <div class="n"><app-navbar></app-navbar></div>
 
-<div class="">
-    <nav aria-label="breadcrumb" class="mt-2">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page" ><a routerLink="/"><i class="fa fa-home">  accueil</i></a></li>
-        </ol>
-      </nav>
+<div class="" 
+style="display:flex;width:100%;
+ margin-top: auto;
+ margin-bottom: auto; 
+ margin-left: 0;
+ background-image: url(./../../../assets/images/mur8.jpg);
+ background-position: center;
+background-repeat: no-repeat;
+background-size: cover;">
+  
+ 
+  <div class="mt-5 mb-5" style="width: 40%; margin:auto;">
+  <div style="position:absolute; top: 9%; left: 6%;">
+    <div *ngIf="user.filename===null" >
+      <img src="../../../assets/images/user.png"  class="card-img-top rounded-circle" 
+      style="width: 120px;height:120px;margin: auto;" alt="...">
+    </div>
+    <div *ngIf="user.filename!==null">
+      <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top rounded-circle" 
+      style="width: 120px;height:120px;margin: auto;" alt="...">
+    </div>
+  </div>
+      <input class="form-control form-control-lg recherche text-center"
+       style="border-radius: 10px;" 
+      type="search" 
+      placeholder="Recherche sur LaCasse.tn" 
+      aria-label="Search"
+       [(ngModel)]="term">
+      <!-- <i class="fa fa-search"></i> -->
+ </div> 
+</div>
+ 
       <div class="all">
       <div class="profile">
-
-        <!-- <div class="img"> -->
-          <!-- <img src="{{'/api/ImgUser/'+user.user_id}}" 
-          style="width: 150px;height: 150px;" 
-          class="card-img-top img-responsive rounded-circle image-user" 
-          alt="{{user.username}}">
+        <div style="width:100%">
+          <!-- <nav aria-label="breadcrumb" class="">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" ><a routerLink="/"><i class="fa fa-home">  accueil</i></a></li>
+              </ol>
+            </nav> -->
         </div>
-        <span class="">{{user.prenom}} {{user.nom}}</span>
-        <span class="">{{user.naissance | date:'mediumDate'}}</span>
-        <span class="">{{user.username}}</span>
-        <span class="">{{user.delegation.libelle}} {{user.delegation.gouvernorat.libelle}}</span> -->
 
-        <div class="card" style="width: 18rem;position:sticky;top:85px;">
-          <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top" alt="...">
-          <div class="card-body">
+      
+
+        <div class="card mt-3" style="width: 18rem;position:sticky;top:85px;margin: auto;">
+          <!-- <div *ngIf="user.filename===null" >
+            <img src="../../../assets/images/user.png"  class="card-img-top rounded-circle" 
+            style="width: 200px;height:200px;margin: auto;" alt="...">
+          </div>
+          <div *ngIf="user.filename!==null">
+            <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top rounded-circle" 
+            style="width: 200px;height:200px;margin: auto;" alt="...">
+          </div> -->
+         
+          <div class="card-body" style="margin:auto;">
             <h5 class="card-title">{{user.prenom}} {{user.nom}}</h5>
           </div>
           <ul class="list-group list-group-flush">

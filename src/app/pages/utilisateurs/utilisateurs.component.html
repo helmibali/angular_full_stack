@@ -30,10 +30,19 @@
           <tr *ngFor="let u of users">
             <td>{{ u.user_id }}</td> 
             <td>
-              <a [routerLink]="['/modifier-image-utilisateur',u.user_id]"><img class="card-img-top img-responsive rounded-circle"
+              <div *ngIf="u.filename === null">
+                <a [routerLink]="['/modifier-image-utilisateur',u.user_id]"><img class="card-img-top img-responsive rounded-circle"
+                  src = "../../../assets/images/user.png" 
+                  style = "height :70px;width:50px"
+                 alt=""></a>
+              </div>
+              <div *ngIf="u.filename !== null">
+                <a [routerLink]="['/modifier-image-utilisateur',u.user_id]"><img class="card-img-top img-responsive rounded-circle"
                   src = "{{'/api/ImgUser/'+u.user_id}}" 
                   style = "height :70px;width:50px"
                  alt=""></a>
+              </div>
+             
           </td> 
             <td>
               <p class="fw-bold mb-1">{{ u.prenom }} {{ u.nom }}</p>

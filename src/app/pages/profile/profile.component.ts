@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   term;
 user:User;
 produits:Produit[];
+pic: Boolean;
   constructor(
     public userService: UserService,
     public authService: AuthService,
@@ -27,6 +28,7 @@ produits:Produit[];
     subscribe( u =>{
       this.user=u;
       console.log(this.user);
+      console.log(this.user.filename);
        
   });
   
@@ -36,5 +38,4 @@ produits:Produit[];
     console.log(this.produits);
   })
   }
-
 }

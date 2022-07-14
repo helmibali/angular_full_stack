@@ -109,6 +109,11 @@ listeProdduitsByMarque(id_marque:number):Observable <Produit[]>{
   return this.http.get<Produit[]>(url);
 }
 
+listeProduitsByMarque(id_marque:number):Observable<Produit[]>{
+  const url = `${'/api/produit/marque'}/${id_marque}`;
+  return this.http.get<Produit[]>(url); 
+}
+
 listeProdduitsByMarqueAndCategorie(id_marque:number, id_cat:number):Observable <Produit[]>{
   const url = `${'/api/produit/marque/categorie'}/${id_marque}/${id_cat}`;
   return this.http.get<Produit[]>(url);

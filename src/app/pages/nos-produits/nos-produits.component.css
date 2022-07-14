@@ -79,6 +79,8 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    /* background-color: #d6def3;  */
+    /* background-color: #f4d5da; */
 
 
 }
@@ -92,10 +94,16 @@
     margin: auto;
    position: sticky;
    top: 85px;
+   height:400px;
+   /* background-color: #f1f4fb; */
   
 
    
 
+}
+.btnFiltre{
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 app-produits-filtred{
@@ -104,6 +112,8 @@ app-produits-filtred{
 
 .produits{
     width: 75%;
+
+
 
 }
 
@@ -115,15 +125,15 @@ app-produits-filtred{
 
 .inputFiltre{
     border: none;
-   
-    background-color: #e5e6e698;
+    background-color: #f1f4fbd3;
+    /* background-color: #e5e6e698; */
     /* border-radius: 50px; */
     
 }
 
 .recherche{
     border: none;
-    background-color: #eacac498;
+    background-color: #f1f4fbd3;
 }
 
 .select{
@@ -148,11 +158,13 @@ justify-content: space-between;
 
 }
 .marque{
-    width: 48%;
+    width: 45%;
+    font-size: 15px;
+    font-weight: bold;
     
 
 }
 .modele{
-    width: 48%;
+    width: 45%;
 
 }

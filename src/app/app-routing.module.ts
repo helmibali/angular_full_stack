@@ -4,6 +4,7 @@ import { AddDelegationComponent } from './admin/add-delegation/add-delegation.co
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DelegationComponent } from './admin/delegation/delegation.component';
 import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
+import { MouteurComponent } from './admin/mouteur/mouteur.component';
 import { ArtComponent } from './article/art/art.component';
 import { ArticleComponent } from './article/article/article.component';
 import { CommentsComponent } from './article/comments/comments.component';
@@ -81,7 +82,8 @@ const routes: Routes = [
   {path:"delegation",component:DelegationComponent},
   {path:"ajouter-delegation",component:AddDelegationComponent},
   // {path:"filter/:categorie/:libelleMarque/:modele/:gov/:deleg" ,component:FilterComponent},
-  {path:"search" ,component:FilterComponent}
+  {path:"search" ,component:FilterComponent},
+  {path:"moteurs" ,component:MouteurComponent},
 
 ];
 

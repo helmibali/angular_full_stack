@@ -14,6 +14,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddUserComponent implements OnInit {
   userFile ;
+  validImg:boolean=false;
+  onSelect:boolean=false;
+  ok:String='';
   selectedGouvernorat: any={id:0,  libelle:''};
   imgURL: any;
   public imagePath;
@@ -48,16 +51,32 @@ export class AddUserComponent implements OnInit {
     })
   }
   addData(){
+   if (!this.validImg){
     const formData = new FormData();
     const user = this.userService.dataForm.value;
     formData.append('user',JSON.stringify(user));
-    formData.append('file',this.userFile);
+   // formData.append('file',this.userFile);
     this.userService.createData(formData).subscribe(data=>{
       console.log(data);
     });
     this.router.navigate(['produits']).then(()=> {
       window.location.reload();
     });
+   }
+
+   else{
+    const formData = new FormData();
+    const user = this.userService.dataForm.value;
+    formData.append('user',JSON.stringify(user));
+    formData.append('file',this.userFile);
+    this.userService.createDataWithFile(formData).subscribe(data=>{
+      console.log(data);
+    });
+    this.router.navigate(['produits']).then(()=> {
+      window.location.reload();
+    });
+   }
+   
   }
 
   onSelectGov(e){
@@ -67,14 +86,16 @@ export class AddUserComponent implements OnInit {
       
     });
     this.selectedGouvernorat.id = e.target.value;
-  
   }
+
+  
 
   onSelectFile(event) {
     if (event.target.files.length > 0)
     {
       const file = event.target.files[0];
       this.userFile = file;
+      this.onSelect=true;
   
  
     var mimeType = event.target.files[0].type;
@@ -91,6 +112,13 @@ export class AddUserComponent implements OnInit {
       this.imgURL = reader.result; 
     }
   }  
+}
+
+validateImg(){
+ 
+  this.validImg=true;
+  console.log(this.validImg);
+  this.ok = 'Votre choix est valide';
 }
 
 

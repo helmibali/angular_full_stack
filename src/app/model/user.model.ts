@@ -11,4 +11,5 @@ export class User {
     roles:Role[];
     delegation:Delegation;
     telephone:string;
+    filename:string;
 }

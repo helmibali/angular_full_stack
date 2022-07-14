@@ -59,6 +59,9 @@ import { FilterComponent } from './pages/nos-produits/filter/filter.component';
 import { ProduitsFiltredComponent } from './pages/nos-produits/produits-filtred/produits-filtred.component';
 import { ProduitByIdComponent } from './pages/nos-produits/produit-by-id/produit-by-id.component';
 import { ViewUserComponent } from './pages/view-user/view-user.component';
+import { MouteurComponent } from './admin/mouteur/mouteur.component';
+import { AddMoteurComponent } from './admin/add-moteur/add-moteur.component';
+
 
 
 
@@ -118,6 +121,9 @@ import { ViewUserComponent } from './pages/view-user/view-user.component';
     ProduitsFiltredComponent,
     ProduitByIdComponent,
     ViewUserComponent,
+    MouteurComponent,
+    AddMoteurComponent,
+   
     
    
     

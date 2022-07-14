@@ -26,12 +26,12 @@
                 style = "height :40px;width:60px"
                alt=""> {{m.libelleModele}} 
           </span><br/>
-
+          <span class="badge badge-pill badge-light">{{produit.carburant}}</span>
           <span class="badge badge-pill badge-light">
             <i class="fa fa-map-marker" aria-hidden="true"></i> 
                         {{produit.delegation.gouvernorat.libelle}}, {{produit.delegation.libelle}}
           </span>
-          
+          <p class="card-text">{{produit.description}}</p>
         </div>
         <div class="image">
             <img 

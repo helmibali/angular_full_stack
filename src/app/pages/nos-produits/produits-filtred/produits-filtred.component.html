@@ -1,11 +1,11 @@
-<div class="produits">
+
 
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5">
         <!-- <pagination-controls class="pagination" style="margin:auto;" (pageChange)="p =$event"></pagination-controls> -->
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5" *ngFor="let produit of produits|filter:term ">
-                <div class="card h-100 shadow" style="border-radius: 25px;" >
+            <div class="col mb-2" *ngFor="let produit of produits|filter:term ">
+                <div class="card h-100" style="border-radius: 25px;" >
                     <!-- Product image-->
                     <img class="card-img-top" style="border-radius: 25px;"
                      src="{{'api/imgp/'+produit.idProduit}}" alt="..." />
@@ -50,7 +50,7 @@
                                         {{produit.delegation.gouvernorat.libelle}}, {{produit.delegation.libelle}}
                           </span>
                     <!-- Product actions-->
-                    <a *ngIf="authService.loggedUser == produit.user.username" class="btn btn-outline-danger" style="border: none;width:40%;margin:auto;">
+                    <a *ngIf="authService.loggedUser == produit.user.username" class="btn btn-outline-danger" (click)="supprimerProduit(produit)" style="border: none;width:40%;margin:auto;">
                         <i class="fa fa-trash"></i></a>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center"><a class="btn btn-outline-primary mt-auto" style="border:none;border-radius: 25px;" [routerLink]="['/produit',produit.idProduit]">Plus de détail</a></div>
@@ -64,4 +64,4 @@
     
           
         </div>
-    </div>
+   

@@ -36,6 +36,9 @@ export class UserService {
   createData(formData: FormData): Observable<any> {
     return this.http.post('/api/user/add', formData);
   }
+  createDataWithFile(formData: FormData): Observable<any> {
+    return this.http.post('/api/userWithImg/add', formData);
+  }
   getRoleslist(){
     return  this.http.get('api/role/liste');
   }

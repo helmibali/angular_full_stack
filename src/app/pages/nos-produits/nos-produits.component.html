@@ -1,140 +1,404 @@
+<!-- 
+<div class="" style="position: absolute;top:1%;left: 40%;width:30%;z-index: 9999;">
+    
+        <input class="form-control form-control recherche text-center"
+        style="border-radius: 10px;" 
+       type="search" 
+       placeholder="Rechercher une piece..." 
+       aria-label="Search"
+        [(ngModel)]="term">
+        <i class="fa fa-search" style="position:absolute;top: 31%;left: 7%;color: rgb(95, 95, 192);"></i>
+    </div> -->
 
+  <div class="" 
+  style="display:flex;width:100%;
+   margin-top: auto;
+   margin-bottom: auto; 
+   margin-left: 0;
+ background-image: url(./../../../assets/images/banner2.png); 
+   background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+  ">
 
-<div class="all">
-<div class="filtre container mt-5 card shadow" style="border-radius: 25px;">
-    <div class="mt-3 mb-3">
-        <input class="form-control form-control-lg recherche text-center" style="border-radius: 25px;" type="search" placeholder="Recherche..." aria-label="Search" [(ngModel)]="term">
-        <i class="fa fa-search"></i>
-   </div> 
-    <div class="option">
-       
-            
-             
-      <!-- <input type="text" name="search" [(ngModel)]="term"> -->
-             <div class="select"> 
-                <label></label> 
-                 <select  class="custom-select custom-select-lg  mb-3 inputFiltre text-center" style="border-radius: 25px;" [(ngModel)]="selectedCategorie.id" (change)="onSelectByCat($event)">
-                    
-                <option value="0">Catégorie</option>
-                <option *ngFor="let c of categories" [value]="c.id">{{c.nomCategorie}}</option>
-            </select><i class="fa fa-filter icon-categorie"></i>
-             </div>
-
-
-<div class="mod-mar">
-    <div class="marque"> 
-        <label></label> 
-         <select class="custom-select custom-select-lg mb-3 inputFiltre" style="border-radius: 25px;" [(ngModel)]="selectedMarque.id"(change)="onSelect($event)">
-             <option value="0">Marque</option>
-             <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
-        </select>
-    </div> 
-
-    <div class="modele">
-        <label></label>  
-        <select class="custom-select custom-select-lg mb-3 inputFiltre" style="border-radius: 25px;" [(ngModel)]="selectedModele.id" (change)="onSelectByMod($event)">
-        <option value="0">Modele</option>
-        <option *ngFor="let mod of modelesByMarque" [value]="mod.id">{{mod.libelleModele}}</option>
-        </select>
-    </div>
-</div>
-            
-<div class="mod-mar">
-            <div class="marque">
-                <label></label>  
-                <select class="custom-select custom-select-lg mb-3 inputFiltre" style="border-radius: 25px;" [(ngModel)]="selectedGouvernorat.id"(change)="onSelectGov($event)">
-                <option style="border-radius: 25px;" value="0">Gouvernourat</option>
-                <option style="border-radius: 25px;" *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
-                </select>
-            </div>
-
-            <div class="modele">
-                <label></label>  
-                <select class="custom-select custom-select-lg mb-3 inputFiltre" style="border-radius: 25px;" [(ngModel)]="selectedDelegation.id" (change)="onSelectByDelegation($event)">
-                <option value="0">Délégation</option>
-                <option *ngFor="let d of delegationsByGov" [value]="d.id">{{d.libelle}}</option>
-                </select>
-            </div>
-        </div>
-
-            
-          
-             
-</div>
-<div class="mb-3">
-    <button class="btn btn-primary btn-lg" (click)="onSubmit()">
-
-
-        <!-- [routerLink]="['/search']"
-        [queryParams]="{ 
-               categorie: this.selectedCategorie.id, 
-               marque : this.selectedMarque.id, 
-               modele: this.selectedModele.id,
-               gouvernorat:this.selectedGouvernorat.id,
-               delegation:this.selectedDelegation.id
-   }" -->
-
-        <!-- [routerLink]="['/filter',selectedCategorie.id ,selectedMarque.id, selectedModele.id,selectedGouvernorat.id,selectedDelegation.id]" -->
-      Filtrer  <i class="fa fa-filter"></i>
-    </button>
-</div>
-</div>
-
-<app-produits-filtred [produits]="produits" [term]="term"></app-produits-filtred>
-
-<!-- <div class="produits">
-
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <pagination-controls class="pagination" style="margin:auto;" (pageChange)="p =$event"></pagination-controls>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5" *ngFor="let p of produitsByDate()|filter:term | paginate: {itemsPerPage: 16, currentPage: p } ">
-                <div class="card h-100" >
-                    
-                    <img class="card-img-top"
-                     src="{{'api/imgp/'+p.idProduit}}" alt="..." />
-                    
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            
-                            <h5 class="fw-bolder">{{  p.nomProduit }}</h5>
-                            
-                            {{p.prixProduit}} TND
-                        </div>
-                        <div >
-                            <ul class="list-group" *ngFor="let m of p.modeles">
-                                <li class="list-group-item"> <img href="#"><img class="card-img-top img-responsive"
-                                    src = "{{'/api/Imgarticles/'+m.marque.id}}" 
-                                    style = "height :40px;width:60px"
-                                   alt=""> {{m.libelleModele}} </li>
+    <img src="./../../../assets/images/n°1.jpeg" alt="" style="position:absolute;width: 200px;left: 75%;">
+   <div style="
+   position:absolute;  
+    top: 9%;
+   left: 10%;
+   width: 100%;">
+    <div style="display:flex;flex-direction:column;width:100%;border:auto;">
+        <div class="p-4 shadow" 
+        style="display:flex; 
+        flex-direction:column;
+        width: 50%;
+        background-color:white;
+        
+        "
+        >
+            <div class="" style="width:65%;margin: auto;">
+                <input class="form-control form-control-lg recherche text-center"
+                 style="border-radius: 10px;" 
+                type="search" 
+                placeholder="Rechercher une piece..." 
+                aria-label="Search"
+                 [(ngModel)]="term">
+                <!-- <i class="fa fa-search"></i> -->
+           </div> 
+            <div class="mt-3" style="top:20%; width:100%;">
+                <div class="mod-mar mt-1 mb-1">
+                    <div class="" style="width:23%;"> 
+                        <div style="display:flex;flex-direction:column;">
+                            <div>
+                                 
+                            <select  class="form-control  mb-1 inputFiltre text-center"
+                             style="
+                             /* border-radius: 10px; */
+                             "
+                              [(ngModel)]="selectedFamille.id"
+                               (change)="onSelectByFamille($event)">
+                               
+                           <option value="0">Famille</option>
+                           <option *ngFor="let f of familles" [value]="f.id">{{f.libelle}}</option>
+                       </select>
+                            </div>
+                            <div >
+                                
+                                <select  class="form-control  mb-1 inputFiltre text-center" 
+                                style=
+                                "
+                                /* border-radius: 10px; */
+                                "
+                                 [(ngModel)]="selectedCategorie.id" 
+                                 (change)="onSelectByCat($event)">
                                    
-                            </ul>
-
+                               <option value="0">Catégorie</option>
+                               <option *ngFor="let c of categoriesByFamille" [value]="c.id">{{c.nomCategorie}}</option>
+                           </select>
+                            </div>
                         </div>
                        
-                    </div>
-
-                    <small>{{p.user.prenom}} {{p.user.nom}}</small>
-                    <small>{{p.dateCreation | date:'medium'}}</small>
-                    <small><i class="fa fa-map-marker" aria-hidden="true"></i> 
-                        {{p.delegation.gouvernorat.libelle}}, {{p.delegation.libelle}}</small>
                     
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Plus de détail</a></div>
+                     </div>
+                    
+                     <div class="" style="width:23%;">
+                        <div style="display:flex;flex-direction:column;">
+                        <div>
+                            
+                            <select class="form-control mb-1 inputFiltre" 
+                             style="
+                             /* border-radius: 10px; */
+                             " 
+                             [(ngModel)]="selectedMarque.id"
+                             (change)="onSelect($event)">
+                                <option value="0">Marque</option>
+                                <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
+                           </select>
+                        </div>
+                        <div>
+                             
+                            <select class="form-control mb-1 inputFiltre" 
+                            style="
+                            /* border-radius: 10px; */
+                            " 
+                            [(ngModel)]="selectedModele.id" 
+                            (change)="onSelectByMod($event)">
+                            <option value="0">Modele</option>
+                            <option *ngFor="let mod of modelesByMarque" [value]="mod.id">{{mod.libelleModele}}</option>
+                            </select>
+                        </div>
+                        </div> 
+                        
+                    </div> 
+                
+                    
+                    <div class="" style="width:23%;">
+                        <div style="display:flex;flex-direction:column;">
+                        <div>
+                            <select class="form-control mb-1 inputFiltre">
+                                <option value="">Carburant</option>
+                                <option>Essence</option>
+                                <option>Diesel</option>
+                                <option>GPL</option>
+                              </select>
+                        </div>
+                        <div>
+                            <select class="form-control mb-1 inputFiltre">
+                                <option value="">Année</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                                <option value="2004">2004</option>
+                                <option value="2005">2005</option>
+                                <option value="2006">2006</option>
+                                <option value="2007">2007</option>
+                                <option value="2008">2008</option>
+                                <option value="2009">2009</option>
+                                <option value="2010">2010</option>
+                                <option value="2011">2011</option>
+                                <option value="2012">2012</option>
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                              </select>
+                        </div>
+                        </div>
+                        
+                       
                     </div>
-                </div>
-            </div>
+                   
             
-      
-   
-        
-    
-          
+                    <div class="" style="width:23%;">
+                        <div style="display:flex;flex-direction:column;">
+                        <div>
+                            <select class="form-control mb-1 inputFiltre"
+                            style="
+                            /* border-radius: 10px; */
+                            " 
+                            [(ngModel)]="selectedGouvernorat.id"
+                            (change)="onSelectGov($event)">
+                           <option style="border-radius: 25px;" value="0">Gouvernourat</option>
+                           <option style="border-radius: 25px;" *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
+                           </select> 
+                        </div>
+                        <div>
+                            <select class="form-control mb-1 inputFiltre"
+                         style="
+                         /* border-radius: 10px; */
+                         "
+                          [(ngModel)]="selectedDelegation.id"
+                           (change)="onSelectByDelegation($event)">
+                        <option value="0">Délégation</option>
+                        <option *ngFor="let d of delegationsByGov" [value]="d.id">{{d.libelle}}</option>
+                        </select>
+                        </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div> 
+            </div>
+            <div class="" style="width: 100%; ">
+                <button class="btn btn-primary btn-lg" style="width:40%;margin:auto;" (click)="onSubmit()">
+                  Filtrer  <i class="fa fa-filter"></i>
+                </button>
+            </div>
         </div>
+    
+    
     </div>
-    <pagination-controls class="pagination" style="margin:auto;" (pageChange)="p =$event"></pagination-controls>
-</section>
-</div> -->
+  
+
+
+
+</div>   
+</div>
+<div class="all">
+
+    <div class="card container mt-1 p-1 filtre shadow" style=" background-color:white;">
+    
+        <div class="entete mt-3" style="display:flex;">
+          <i style="color:white ;" 
+          class="fa fa-sliders" aria-hidden="true"> Filtre Avancé</i> 
+          <a class="badge badge-pill badge-light" (click)="reInitFilter()">
+              <i class="fa fa-minus-square-o" aria-hidden="true"> Réinitialiser Filtre</i> 
+        </a>
+        </div>
+          
+          <div class="mt-2 mb-2" style="width:100%">
+              <input class="form-control form-control-lg recherche text-center"
+               style=
+               "
+               /* border-radius: 15px; */
+               " 
+                type="search" placeholder="Recherche sur LaCasse.tn     "
+                aria-label="Search" 
+                [(ngModel)]="term">
+              
+         </div> 
+         
+          <div class="option">
+            <div class="mod-mar mt-1 mb-1">
+              <div class="marque"> 
+                 
+                   <select  class="form-control  mb-1 inputFiltre text-center"
+                    style="
+                    /* border-radius: 10px; */
+                    "
+                     [(ngModel)]="selectedFamille.id"
+                      (change)="onSelectByFamille($event)">
+                      
+                  <option value="0">Famille</option>
+                  <option *ngFor="let f of familles" [value]="f.id">{{f.libelle}}</option>
+              </select>
+               </div>
+              <div class="modele"> 
+                  
+                   <select  class="form-control  mb-1 inputFiltre text-center" 
+                   style=
+                   "
+                   /* border-radius: 10px; */
+                   "
+                    [(ngModel)]="selectedCategorie.id" 
+                    (change)="onSelectByCat($event)">
+                      
+                  <option value="0">Catégorie</option>
+                  <option *ngFor="let c of categoriesByFamille" [value]="c.id">{{c.nomCategorie}}</option>
+              </select>
+               </div>
+            </div>
+      <div class="mt-1 mb-1  mod-mar">
+          <div class="marque"> 
+              
+               <select class="form-control mb-1 inputFiltre" 
+                style="
+                /* border-radius: 10px; */
+                " 
+                [(ngModel)]="selectedMarque.id"
+                (change)="onSelect($event)">
+                   <option value="0">Marque</option>
+                   <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
+              </select>
+          </div> 
+      
+          <div class="modele">
+                
+              <select class="form-control mb-1 inputFiltre" 
+              style="
+              /* border-radius: 10px; */
+              " 
+              [(ngModel)]="selectedModele.id" 
+              (change)="onSelectByMod($event)">
+              <option value="0">Modele</option>
+              <option *ngFor="let mod of modelesByMarque" [value]="mod.id">{{mod.libelleModele}}</option>
+              </select>
+          </div>
+      </div>
+      <div class="mb-1 mt-1 mod-mar">
+          <div class="marque">
+              <select class="form-control mb-1 inputFiltre">
+                  <option value="">Année</option>
+                  <option value="1990">1990</option>
+                  <option value="1991">1991</option>
+                  <option value="1992">1992</option>
+                  <option value="1993">1993</option>
+                  <option value="1994">1994</option>
+                  <option value="1995">1995</option>
+                  <option value="1996">1996</option>
+                  <option value="1997">1997</option>
+                  <option value="1998">1998</option>
+                  <option value="1999">1999</option>
+                  <option value="2000">2000</option>
+                  <option value="2001">2001</option>
+                  <option value="2002">2002</option>
+                  <option value="2003">2003</option>
+                  <option value="2004">2004</option>
+                  <option value="2005">2005</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                </select>
+          </div>
+          <div class="marque">
+              
+              <select class="form-control mb-1 inputFiltre">
+                <option value="">Carburant</option>
+                <option>Essence</option>
+                <option>Diesel</option>
+                <option>GPL</option>
+              </select>
+          </div>
+            
+          
+      </div>
+      
+                  
+      <div class="mod-mar mt-1 mb-3">
+                  <div class="marque">
+                       
+                      <select class="form-control mb-1 inputFiltre"
+                       style="
+                       /* border-radius: 10px; */
+                       " 
+                       [(ngModel)]="selectedGouvernorat.id"
+                       (change)="onSelectGov($event)">
+                      <option style="border-radius: 25px;" value="0">Gouvernourat</option>
+                      <option style="border-radius: 25px;" *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
+                      </select>
+                  </div>
+      
+                  <div class="modele">
+                        
+                      <select class="form-control mb-1 inputFiltre"
+                       style="
+                       /* border-radius: 10px; */
+                       "
+                        [(ngModel)]="selectedDelegation.id"
+                         (change)="onSelectByDelegation($event)">
+                      <option value="0">Délégation</option>
+                      <option *ngFor="let d of delegationsByGov" [value]="d.id">{{d.libelle}}</option>
+                      </select>
+                  </div>
+              </div>
+      
+                  
+                
+                   
+      </div>
+      <div class="btnFiltre mb-5">
+          <button class="btn btn-primary btn-lg" (click)="onSubmit()">
+            Filtrer  <i class="fa fa-filter"></i>
+          </button>
+      </div>
+      </div>
+      
+<div class="mt-3 produits" >
+
+ 
+    
+    <div style="display:flex;"> 
+         <p style="color:rgb(78, 74, 74);font-weight:bold;font-size: large;">
+        Résultats de recherche 
+       </p> 
+       <p> ({{produits.length}})</p>
+    </div>
+
+    <app-produits-filtred [produits]="produits" [term]="term"></app-produits-filtred>
+</div>
+
 
 </div>
 

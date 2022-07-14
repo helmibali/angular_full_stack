@@ -4,13 +4,18 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { Categorie } from 'src/app/model/categorie.model';
 import { Delegation } from 'src/app/model/delegation.model';
+import { Famille } from 'src/app/model/famille.model';
 import { Gouvernorat } from 'src/app/model/gouvernorat.model';
 import { Modele } from 'src/app/model/modele.model';
+import { Moteur } from 'src/app/model/moteur.model';
 import { ProduitService } from 'src/app/produit.service';
+import { CatService } from 'src/app/services/cat.service';
 import { DelegationService } from 'src/app/services/delegation.service';
+import { FamilleService } from 'src/app/services/famille.service';
 import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
+import { MoteurService } from 'src/app/services/moteur.service';
 
 @Component({
   selector: 'app-ajouter-produit-front',
@@ -21,13 +26,29 @@ export class AjouterProduitFrontComponent implements OnInit {
   @Input()
   addButton;
 
+  err:number = 0;
+  erreur=0;
+  isLoading:boolean = false;
+  errTXT:string ='';
+
+
+  moteursByModele:Moteur[];
+  moteurs:Moteur[];
+  categoriesByFamille:Categorie[];
+  familles:Famille[];
   selectedMarque: any = {id:0, marqueLibelle:''};
+  selectedMoteur: any = { id: 0, libelle: "" };
   selectedGouvernorat: any={id:0,  libelle:''};
+  selectedDelegation: any={id:0,  libelle:''};
+  selectedFamille: any = { id: 0, libelle: "" };
+  selectedCategorie: any = { id: 0, nomCategorie: "" };
+
   modeles:Modele[];
   gouvernorats:Gouvernorat[];
   delegations:Delegation[];
   marques:any[];
   dropdownSettings;
+  dropdownSettings2;
   categories: Categorie[];
   userFile ;
   imgURL: any;
@@ -42,6 +63,9 @@ export class AjouterProduitFrontComponent implements OnInit {
               private authService : AuthService,
               private gouvernoratService : GouvernoratService,
               private delegationService : DelegationService,
+              private familleService : FamilleService,
+              private moteurService: MoteurService,
+              private catService : CatService,
   ) { }
 
   initForm(){
@@ -50,8 +74,12 @@ export class AjouterProduitFrontComponent implements OnInit {
       prixProduit:null,
       dateCreation:new Date(),
       modeles : [],
+      carburant: '',
+      description:'',
       categorie_id:null,
+     
       delegation_id:null,
+      
      
      
       user:this.authService.loggedUser,
@@ -79,21 +107,30 @@ export class AjouterProduitFrontComponent implements OnInit {
       this.gouvernorats=g;
     })
 
-    // this.delegationService.ListeDelegation().subscribe(d=>{
-    //   this.delegations=d
-    // })
+    this.familleService.listeFamille().subscribe(f=>{
+      this.familles = f;
+    })
+    this.moteurService.listeMoteurs().subscribe(m=>{
+      this.moteurs = m;
+    })
 
-   
-
-
-
+    
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
       textField: 'libelleModele',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All'
+      selectAllText: 'Selectioner tout',
+      unSelectAllText: 'déselectioner tout'
     };
+
+    
+    // this.dropdownSettings2 = {
+    //   singleSelection: false,
+    //   idField: 'id',
+    //   textField: 'libelle',
+    //   selectAllText: 'Selectioner tout',
+    //   unSelectAllText: 'déselectioner tout'
+    // };
   
   
  
@@ -104,13 +141,19 @@ export class AjouterProduitFrontComponent implements OnInit {
     const produit = this.produitService.dataForm.value;
     formData.append('produit',JSON.stringify(produit));
     formData.append('file',this.userFile);
-    this.produitService.createData(formData).subscribe(data=>{
-      console.log(data);
+    this.produitService.createData(formData).toPromise().then(data=>{
+      console.log(data);  
+      this.router.navigate(['/']).then(()=> {
+        window.location.reload();
+      },
+      );
+    }
+   
+    ) 
+    .catch(()=>this.errTXT="msg d'erreur").finally(()=>{
       
     });
-    this.router.navigate(['/']).then(()=> {
-      window.location.reload();
-    });
+  
   }
 
   onSelectFile(event) {
@@ -145,10 +188,19 @@ export class AjouterProduitFrontComponent implements OnInit {
 
 onItemSelect($event){
   console.log('$event is ', $event); 
+  this.moteurService.moteursByModele($event.id).subscribe(m=>{
+    this.moteursByModele = m; })
+}
+
+onMoteurSelect($event){
+  console.log('$event is ', $event); 
 }
 
 getObjectListFromData(ids){
   return this.modeles.filter(item => ids.includes(item.id))
+}
+getOMoteurbjectListFromData(ids){
+  return this.moteurs.filter(item => ids.includes(item.id))
 }
 
 onSelect(e){
@@ -167,6 +219,15 @@ onSelectGov(e){
   });
   this.selectedGouvernorat.id = e.target.value;
 
+}
+onSelectByFamille(e){
+  console.log(e.target.value);
+  this.catService
+    .listeCategorieByFamille(e.target.value)
+    .subscribe((data) => {
+      this.categoriesByFamille = data;
+    });
+  this.selectedFamille.id = e.target.value;
 }
 
 }

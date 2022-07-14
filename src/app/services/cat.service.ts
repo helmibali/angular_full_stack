@@ -40,6 +40,10 @@ export class CatService {
     const url = `${this.apiURLd}/${id}`;
     return this.http.delete(url, httpOPtions);
     }
+    listeCategorieByFamille(id:number):Observable<Categorie[]>{
+      const url = `${'/api/categoriesByFamille'}/${id}`;
+      return this.http.get<Categorie[]>(url);
+    }
 }
 
 
