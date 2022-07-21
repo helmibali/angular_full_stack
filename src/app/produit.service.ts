@@ -16,7 +16,7 @@ const httpOPtions = {
 })
 export class ProduitService {
 
-apiURL : string =  'http://localhost:8085/api/produits';
+apiURL : string =  'http://piece-de-rechange.herokuapp.com/api/produits';
 produits :Produit[];
  produit :Produit;
  public modeles:Modele[];
@@ -41,11 +41,11 @@ produits :Produit[];
   }
 
   createData(formData: FormData): Observable<any> {
-    return this.http.post("/api/produit/add", formData);
+    return this.http.post("http://piece-de-rechange.herokuapp.com/api/produit/add", formData);
   }
 
   updateData(formData: FormData,id:number): Observable<any> {
-    return this.http.put(`${'api/produit'}/${id}`, formData);
+    return this.http.put(`${'http://piece-de-rechange.herokuapp.com/api/produit'}/${id}`, formData);
   }
 
 
@@ -58,76 +58,76 @@ listeProduits():Observable<Produit[]>{
   return this.http.get<Produit[]>(this.apiURL);
 }
 ProdByModGov(id_marque,id_mod,id_gouvernorat):Observable<Produit[]>{
-const url = `${'/api/produit/modeleByGov'}/${id_marque}/${id_mod}/${id_gouvernorat}`;
+const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/modeleByGov'}/${id_marque}/${id_mod}/${id_gouvernorat}`;
 return this.http.get<Produit[]>(url);
 }
 
 listeProduitsByCategorie(id: number):Observable <Produit[]>{
-  const url = `${'/api/produit_cat'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit_cat'}/${id}`;
   return this.http.get<Produit[]>(url);
 }
 listeProduitsByUser(user_id: number):Observable <Produit[]>{
-  const url = `${'/api/produit/user'}/${user_id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/user'}/${user_id}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByModele(id_mod:number):Observable <Produit[]>{
-  const url = `${'api/produit/modele'}/${id_mod}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/modele'}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByModeleAndCategorieAndMarque(id_mod:number,id_cat:number,id_marque:number):Observable <Produit[]>{
-  const url = `${'/api/produit/modelebycat'}/${id_mod}/${id_cat}/${id_marque}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/modelebycat'}/${id_mod}/${id_cat}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByModeleAndCategorieAndGouvernorat(id_mod:number,id_cat:number,id_gouvernorat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(id_mod:number,id_cat:number,id_gouvernorat:number,id_delegation):Observable <Produit[]>{
-  const url = `${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByGouvernoratAndDelegation(id_gouvernorat:number,id_delegation:number):Observable <Produit[]>{
-  const url = `${'/api/produit/delegationAndGouvernorat'}/${id_gouvernorat}/${id_delegation}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/delegationAndGouvernorat'}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernorat(id_gouvernorat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernorat'}/${id_gouvernorat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/gouvernorat'}/${id_gouvernorat}`;
   return this.http.get<Produit[]>(url);
 }
 
 
 listeProdduitsByGouvernoratAndMarque(id_gouvernorat:number,id_marque:number):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndMarque'}/${id_gouvernorat}/${id_marque}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/gouvernoratAndMarque'}/${id_gouvernorat}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByMarque(id_marque:number):Observable <Produit[]>{
-  const url = `${'/api/produit/marque'}/${id_marque}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/marque'}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProduitsByMarque(id_marque:number):Observable<Produit[]>{
-  const url = `${'/api/produit/marque'}/${id_marque}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/marque'}/${id_marque}`;
   return this.http.get<Produit[]>(url); 
 }
 
 listeProdduitsByMarqueAndCategorie(id_marque:number, id_cat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/marque/categorie'}/${id_marque}/${id_cat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/marque/categorie'}/${id_marque}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
 
 
 listeProdduitsByGouvernoratAndDelegationAndMarque(id_gouvernorat:number,id_marque:number,id_delegation:number):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndMarqueAndDelegation'}/${id_gouvernorat}/${id_marque}/${id_delegation}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/gouvernoratAndMarqueAndDelegation'}/${id_gouvernorat}/${id_marque}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernoratAndDelegationAndMarqueAndCategorie(id_gouvernorat:number,id_marque:number,id_delegation:number,id_cat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndMarqueAndDelegationAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_delegation}/${id_cat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/gouvernoratAndMarqueAndDelegationAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_delegation}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
@@ -138,38 +138,38 @@ listeProdduitsByGouvernoratAndMarqueAndCategorie(id_gouvernorat:number,id_marque
 
 
 listeProdduitsByDelegationAndModeles(id_delegation:number,id_mod:number):Observable <Produit[]>{
-  const url = `${'/api/produit/delegationAndModeles'}/${id_delegation}/${id_mod}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/delegationAndModeles'}/${id_delegation}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernoratAndCategorie(id_gouvernorat:number,id_cat):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndCategorie'}/${id_gouvernorat}/${id_cat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/gouvernoratAndCategorie'}/${id_gouvernorat}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByDelegationAndCategorie(id_delegation:number,id_cat):Observable <Produit[]>{
-  const url = `${'/api/produit/delegationAndCategorie'}/${id_delegation}/${id_cat}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/delegationAndCategorie'}/${id_delegation}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeCategories():Observable<Categorie[]>{
   
-  return this.http.get<Categorie[]>('/api/categorie/liste');
+  return this.http.get<Categorie[]>('http://piece-de-rechange.herokuapp.com/api/categorie/liste');
 }
 
 listeModele(): Observable<any> {
    
-  return this.http.get('/api/modele/liste');
+  return this.http.get('http://piece-de-rechange.herokuapp.com/api/modele/liste');
 }
 consulterModele(id : number): Observable<Modele>{
 
-  const url = `${'api/modele'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/modele'}/${id}`;
   return this.http.get<Modele>(url);
 
 }
 
 
 ajouterProduit(prod: Produit):Observable<Produit>{
- return this.http.post<Produit>('http://localhost:8085/api/produit/addd', prod, httpOPtions);
+ return this.http.post<Produit>('http://piece-de-rechange.herokuapp.com/api/produit/addd', prod, httpOPtions);
 }
 
 ajouterCategorie(cat : Categorie):Observable<Categorie>{
@@ -178,21 +178,21 @@ ajouterCategorie(cat : Categorie):Observable<Categorie>{
 
 supprimerProduit(id: number){
 
-  const url = `${'api/produit/delete'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit/delete'}/${id}`;
   return this.http.delete(url, httpOPtions);
   }
 
 
 consulterProduit(id : number): Observable<Produit>{
 
-  const url = `${'api/produit'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/produit'}/${id}`;
   return this.http.get<Produit>(url);
 
 }
 
 consulterCategorie(id : number): Observable<Categorie>{
 
-  const url = `${'api/categorie'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.com/api/categorie'}/${id}`;
   return this.http.get<Categorie>(url);
 
 }

@@ -14,10 +14,13 @@ export class FamilleService {
   constructor(private http:HttpClient) { }
 
   listeFamille():Observable<Famille[]>{
-    return this.http.get<Famille[]>('/api/familles');
+    return this.http.get<Famille[]>('http://piece-de-rechange.herokuapp.com/api/familles');
   }
   familleById(id:number):Observable<Famille>{
-    return this.http.get<Famille>('/api/famille');
+    return this.http.get<Famille>('http://piece-de-rechange.herokuapp.com/api/famille');
+  }
+  ajouterCategorie(f : Famille):Observable<Famille>{
+    return this.http.post<Famille>('http://piece-de-rechange.herokuapp.com/api/famille',f,httpOPtions);
   }
   
 }

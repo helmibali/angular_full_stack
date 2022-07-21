@@ -15,7 +15,7 @@ import { FamilleService } from 'src/app/services/famille.service';
 import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
-import { MoteurService } from 'src/app/services/moteur.service';
+
 
 @Component({
   selector: 'app-ajouter-produit-front',
@@ -64,7 +64,7 @@ export class AjouterProduitFrontComponent implements OnInit {
               private gouvernoratService : GouvernoratService,
               private delegationService : DelegationService,
               private familleService : FamilleService,
-              private moteurService: MoteurService,
+             
               private catService : CatService,
   ) { }
 
@@ -110,9 +110,7 @@ export class AjouterProduitFrontComponent implements OnInit {
     this.familleService.listeFamille().subscribe(f=>{
       this.familles = f;
     })
-    this.moteurService.listeMoteurs().subscribe(m=>{
-      this.moteurs = m;
-    })
+   
 
     
     this.dropdownSettings = {
@@ -188,8 +186,7 @@ export class AjouterProduitFrontComponent implements OnInit {
 
 onItemSelect($event){
   console.log('$event is ', $event); 
-  this.moteurService.moteursByModele($event.id).subscribe(m=>{
-    this.moteursByModele = m; })
+  
 }
 
 onMoteurSelect($event){

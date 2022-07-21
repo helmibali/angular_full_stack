@@ -22,7 +22,7 @@
 
     <div>
         <img class="card-img-top img-responsive rounded-circle"
-        src = "{{'api/ImgUser/'+a.user.user_id}}" 
+        src = "{{'http://piece-de-rechange.herokuapp.com/api/ImgUser/'+a.user.user_id}}" 
         style = "height :70px;width:35px;"
        alt="">
 
@@ -37,7 +37,7 @@
           <p class="card-text" style="margin:auto ;"><small class="text-muted">{{a.dateCreation | date:'medium'}}</small></p>
         </div>
         <img class="card-img-top img-responsive"
-            src = "{{'api/imga/'+a.id}}" 
+            src = "{{'http://piece-de-rechange.herokuapp.com/api/imga/'+a.id}}" 
             style = "height :500px;width:350px;  margin:auto ;"
            alt="">
       </div>

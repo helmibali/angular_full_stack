@@ -1,14 +1,22 @@
 
 
 <section class="py-5">
-    <div class="container px-4 px-lg-5">
+    <div class="px-4 px-lg-5">
         <!-- <pagination-controls class="pagination" style="margin:auto;" (pageChange)="p =$event"></pagination-controls> -->
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="col mb-2" *ngFor="let produit of produits|filter:term ">
-                <div class="card h-100" style="border-radius: 25px;" >
+
+                
+
+
+                <div class="card h-100" 
+                style="
+                /* border-radius: 15px; */
+                 /* border: none; */
+                 " >
                     <!-- Product image-->
-                    <img class="card-img-top" style="border-radius: 25px;"
-                     src="{{'api/imgp/'+produit.idProduit}}" alt="..." />
+                    <img class="card-img-top" style="border-radius: 15px;"
+                     src="{{'http://piece-de-rechange.herokuapp.com/api/imgp/'+produit.idProduit}}" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -28,7 +36,7 @@
                      
                         <span class="badge badge-pill badge-light mt-2 text-center" style = "margin: auto;"*ngFor="let m of produit.modeles">
                             <img href="#"><img class="card-img-top img-responsive"
-                               src = "{{'/api/Imgarticles/'+m.marque.id}}" 
+                               src = "{{'http://piece-de-rechange.herokuapp.com/api/Imgarticles/'+m.marque.id}}" 
                                style = "height :40px;width:60px;"
                               alt=""> {{m.libelleModele}} 
                          </span>  

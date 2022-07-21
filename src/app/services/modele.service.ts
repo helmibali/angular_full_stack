@@ -14,7 +14,7 @@ const httpOPtions = {
 })
 export class ModeleService {
 modeles:Modele[];
-apiUrl:'api/modele';
+apiUrl:'http://piece-de-rechange.herokuapp.com/api/modele';
 public dataForm: FormGroup;
   constructor(
     private http: HttpClient
@@ -22,7 +22,7 @@ public dataForm: FormGroup;
 
   getAll(): Observable<any> {
    
-    return this.http.get('/api/modele/liste');
+    return this.http.get('http://piece-de-rechange.herokuapp.com/api/modele/liste');
   }
   consulterModele(id : number): Observable<Modele>{
 
@@ -36,7 +36,7 @@ public dataForm: FormGroup;
 
   }
   ajouterCategorie(formData: FormData):Observable<any>{
-    return this.http.post<any>('api/modele/add',formData);
+    return this.http.post<any>('http://piece-de-rechange.herokuapp.com/api/modele/add',formData);
   }
   supprimerCategorie(id: number){
 
@@ -45,11 +45,11 @@ public dataForm: FormGroup;
     }
 
     getAllModeles():Observable<any>{
-      return this.http.get<any>('/api/modele/liste');
+      return this.http.get<any>('http://piece-de-rechange.herokuapp.com/api/modele/liste');
     }
 
     getAllModelesByMarque_id(id:number):Observable<any>{
-      return this.http.get<any>(`${'/api/modeleByMarqueId'}/${id}`);
+      return this.http.get<any>(`${'http://piece-de-rechange.herokuapp.com/api/modeleByMarqueId'}/${id}`);
     }
     
 }

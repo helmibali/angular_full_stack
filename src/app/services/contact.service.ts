@@ -14,10 +14,10 @@ export class ContactService {
   constructor(private http: HttpClient) { }
 
   createData(formData: FormData): Observable<any> {
-    return this.http.post("/api/contact", formData);
+    return this.http.post("http://piece-de-rechange.herokuapp.com/api/contact", formData);
   }
 
   getAll():Observable<any>{
-return this.http.get('api/contact/liste');
+return this.http.get('http://piece-de-rechange.herokuapp.com/api/contact/liste');
   }
 }

@@ -28,37 +28,37 @@ export class UserService {
     return this.http.request(req);
   }
   getUserById(user_id: number):Observable<User> {
-    return this.http.get<User>(`${'/api/user'}/${user_id}`);
+    return this.http.get<User>(`${'http://piece-de-rechange.herokuapp.com/api/user'}/${user_id}`);
   }
   getUserByUsername(username: string):Observable<User> {
-    return this.http.get<User>(`${'/api/login'}/${username}`);
+    return this.http.get<User>(`${'http://piece-de-rechange.herokuapp.com/api/login'}/${username}`);
   }
   createData(formData: FormData): Observable<any> {
-    return this.http.post('/api/user/add', formData);
+    return this.http.post('http://piece-de-rechange.herokuapp.com/api/user/add', formData);
   }
   createDataWithFile(formData: FormData): Observable<any> {
-    return this.http.post('/api/userWithImg/add', formData);
+    return this.http.post('http://piece-de-rechange.herokuapp.com/api/userWithImg/add', formData);
   }
   getRoleslist(){
-    return  this.http.get('api/role/liste');
+    return  this.http.get('http://piece-de-rechange.herokuapp.comapi/role/liste');
   }
   updateData(formData: FormData ,user_id): Observable<any> {
-    return this.http.put(`${'/api/user'}/${user_id}`, formData);
+    return this.http.put(`${'http://piece-de-rechange.herokuapp.com/api/user'}/${user_id}`, formData);
   }
 
   updateRole(u:User,user_id:number): Observable<User> {
-    return this.http.put<User>(`${'/api/user'}/${user_id}`, u, httpOPtions);
+    return this.http.put<User>(`${'http://piece-de-rechange.herokuapp.com/api/user'}/${user_id}`, u, httpOPtions);
   }
 updateImageUser(formData:FormData , user_id):Observable<any> {
-  return this.http.put(`${'/api/userImg'}/${user_id}`, formData)
+  return this.http.put(`${'http://piece-de-rechange.herokuapp.com/api/userImg'}/${user_id}`, formData)
 }
 updateImagePw(formData:FormData , user_id):Observable<any> {
-  return this.http.put(`${'/api/userPw'}/${user_id}`, formData)
+  return this.http.put(`${'http://piece-de-rechange.herokuapp.com/api/userPw'}/${user_id}`, formData)
 }
 
 supprimerUtilisateur(id: number){
 
-  const url = `${'api/user'}/${id}`;
+  const url = `${'http://piece-de-rechange.herokuapp.comapi/user'}/${id}`;
   return this.http.delete(url, httpOPtions);
   }
 }

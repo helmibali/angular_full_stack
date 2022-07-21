@@ -12,7 +12,7 @@
         </div> 
         <div *ngIf="currentUser.filename !== null">
           <img class="card-img-top img-responsive"
-              src = "{{'/api/ImgUser/'+currentUser.user_id}}" 
+              src = "{{'http://piece-de-rechange.herokuapp.com/api/ImgUser/'+currentUser.user_id}}" 
               style = "height :150px;width:120px"
              alt="">
           </div>

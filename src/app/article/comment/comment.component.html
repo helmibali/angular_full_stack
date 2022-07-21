@@ -1,6 +1,6 @@
 <div class="mt-1 coomment">
 <img class="card-img-top img-responsive rounded-circle image-user"
-    src = "{{'/api/ImgUser/'+cmt.user.user_id}}" 
+    src = "{{'http://piece-de-rechange.herokuapp.com/api/ImgUser/'+cmt.user.user_id}}" 
     style = "height :38px;width:22px"
    alt="">
 <div class="commentaire p-1 card">
@@ -17,9 +17,7 @@
 
 
 <div>
-    <!-- <div *ngIf="canReply"
-     (click)="setActiveComment.emit({ id: cmt.id, type: activeCommentType.replying })"
-       >Répondre</div> -->
+   
     <div *ngIf="canEdit"
     (click)="setActiveComment.emit({ id: cmt.id, type: activeCommentType.editing })"
     >Modifier</div>
@@ -28,28 +26,10 @@
      (click)="deleteComment.emit(cmt.id)"
      ><td><a>
       <i class="fa fa-trash"></i></a></td></div>
-     <!-- <div class="replies" *ngIf="replies.length > 0">
-     reply
-      <comment 
-      *ngFor="let reply of a.replies"
-      [comment]="reply"
-      (setActiveComment)="setActiveComment.emit($event)"
-      [activeComment]="a.activeComment"
-      [parentId]="cmt.id"
-      [replies]="[]"
-    ></comment>
-      </div> -->
+  
   </div>
 
-  <!-- <comment-form
-*ngIf="isReplying()"
-submitLabel="Répond"
-(handleSubmit)="addComment.emit({
-   text: $event,
-   articleId: a.id, 
-   parentId: replyId
- })"
-></comment-form> -->
+ 
 
  
 </div>

@@ -15,6 +15,6 @@ export class GouvernoratService {
 
   listeGouvernorats():Observable<Gouvernorat[]>{
   
-    return this.http.get<Gouvernorat[]>('/api/gouvernorats');
+    return this.http.get<Gouvernorat[]>('http://piece-de-rechange.herokuapp.com/api/gouvernorats');
   }
 }

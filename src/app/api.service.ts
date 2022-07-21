@@ -9,6 +9,6 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getUserslist(){
-    return  this.http.get('/api/users/liste');
+    return  this.http.get('http://piece-de-rechange.herokuapp.com/api/users/liste');
   }
 }

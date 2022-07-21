@@ -26,7 +26,7 @@ apiURLall: string = '/api/users/liste';
 
   getUserFromDB(username:string):Observable<User>
   {
-    const url = `${this.apiURL}/${username}`;
+    const url = `${'http://piece-de-rechange.herokuapp.com/api/login'}/${username}`;
     return this.http.get<User>(url)
   }
 
@@ -67,7 +67,7 @@ apiURLall: string = '/api/users/liste';
       });
       }
       addUser(user:User):Observable<User>{
-        return this.http.post<User>('/api/user/add', user,httpOPtions);
+        return this.http.post<User>('http://piece-de-rechange.herokuapp.com/api/user/add', user,httpOPtions);
       }
 
 

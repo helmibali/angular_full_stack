@@ -18,7 +18,7 @@ background-size: cover;">
       style="width: 120px;height:120px;margin: auto;" alt="...">
     </div>
     <div *ngIf="user.filename!==null">
-      <img src="{{'/api/ImgUser/'+user.user_id}}"  class="card-img-top rounded-circle" 
+      <img src="{{'http://piece-de-rechange.herokuapp.com/api/ImgUser/'+user.user_id}}"  class="card-img-top rounded-circle" 
       style="width: 120px;height:120px;margin: auto;" alt="...">
     </div>
   </div>

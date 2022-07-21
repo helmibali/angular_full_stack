@@ -10,15 +10,15 @@ const httpOPtions = {
   providedIn: 'root'
 })
 export class CatService {
-  apiURL:string = '/api/categorie';
-  apiURLu:string = '/api/categorie/update';
-  apiURLd:string = '/api/categorie/delete';
+  apiURL:string = 'http://piece-de-rechange.herokuapp.com/api/categorie';
+  apiURLu:string = 'http://piece-de-rechange.herokuapp.com/api/categorie/update';
+  apiURLd:string = 'http://piece-de-rechange.herokuapp.com/api/categorie/delete';
 
   constructor(private http : HttpClient) { }
 
   listeCategories():Observable<Categorie[]>{
   
-    return this.http.get<Categorie[]>('/api/categorie/liste');
+    return this.http.get<Categorie[]>('http://piece-de-rechange.herokuapp.com/api/categorie/liste');
   }
   consulterCategorie(id : number): Observable<Categorie>{
 
@@ -33,7 +33,7 @@ export class CatService {
 
   }
   ajouterCategorie(cat : Categorie):Observable<Categorie>{
-    return this.http.post<Categorie>('/api/categorie/add',cat,httpOPtions);
+    return this.http.post<Categorie>('http://piece-de-rechange.herokuapp.com/api/categorie/add',cat,httpOPtions);
   }
   supprimerCategorie(id: number){
 
@@ -41,7 +41,7 @@ export class CatService {
     return this.http.delete(url, httpOPtions);
     }
     listeCategorieByFamille(id:number):Observable<Categorie[]>{
-      const url = `${'/api/categoriesByFamille'}/${id}`;
+      const url = `${'http://piece-de-rechange.herokuapp.com/api/categoriesByFamille'}/${id}`;
       return this.http.get<Categorie[]>(url);
     }
 }

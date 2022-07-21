@@ -40,7 +40,7 @@ marques:Marque[];
    
     this.modeleService.ajouterCategorie(formData).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['/modeles']);
+      // this.router.navigate(['/modeles']);
     });
   }
 

@@ -27,16 +27,16 @@ public dataForm: FormGroup;
 
     addComment(formData: FormData):Observable<any>{
       return this.http.post<any>
-      ('api/comment1',formData);
+      ('http://piece-de-rechange.herokuapp.com/api/comment1',formData);
     }
 
     
   getComments():Observable<any>{
   
-    return this.http.get<any>('api/comments');
+    return this.http.get<any>('http://piece-de-rechange.herokuapp.com/api/comments');
   }
     createComment(text:string,parentId:number,articleId:number):Observable<Cmt>{
-      return this.http.post<Cmt>('api/comment',{
+      return this.http.post<Cmt>('http://piece-de-rechange.herokuapp.com/api/comment',{
         text: text,
         user: this.authservice.loggedUser,
         article:articleId,
@@ -47,17 +47,17 @@ public dataForm: FormGroup;
 
     listeComments():Observable<Cmt[]>{
   
-      return this.http.get<Cmt[]>('api/comments');
+      return this.http.get<Cmt[]>('http://piece-de-rechange.herokuapp.com/api/comments');
     }
 
     deleteComment(id: number){
 
-      const url = `${'api/comment'}/${id}`;
+      const url = `${'http://piece-de-rechange.herokuapp.com/api/comment'}/${id}`;
       return this.http.delete(url, httpOPtions);
       }
 
       updateComment(id:number, text:string,parentId:number,articleId:number):Observable<Cmt>{
-        return this.http.put<Cmt>(`'api/comment'/${id}`,{
+        return this.http.put<Cmt>(`'http://piece-de-rechange.herokuapp.com/api/comment'/${id}`,{
           id,
           text: text,
           user: this.authservice.loggedUser,

@@ -14,7 +14,7 @@
    
     <div class="container">
       <div class="card" style="margin: auto;" style="width: 18rem;">
-        <img src="{{'/api/ImgUser/'+produit.user.user_id}}" class="card-img-top img-responsive rounded-circle image-user" alt="...">
+        <img src="{{'http://piece-de-rechange.herokuapp.com/api/ImgUser/'+produit.user.user_id}}" class="card-img-top img-responsive rounded-circle image-user" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{produit.user.prenom }} {{produit.user.nom}}</h5>
         

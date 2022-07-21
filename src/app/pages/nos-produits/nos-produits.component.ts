@@ -15,7 +15,7 @@ import { FamilleService } from "src/app/services/famille.service";
 import { GouvernoratService } from "src/app/services/gouvernorat.service";
 import { MarqueService } from "src/app/services/marque.service";
 import { ModeleService } from "src/app/services/modele.service";
-import { MoteurService } from "src/app/services/moteur.service";
+
 
 @Component({
   selector: "app-nos-produits",
@@ -50,7 +50,7 @@ export class NosProduitsComponent implements OnInit {
   selectedDelegation: any = { id: 0, libelle: "" };
   selectedFamille: any = { id: 0, libelle: "" };
   constructor(
-    private moteurService: MoteurService,
+   
     private catService: CatService,
     private produitService: ProduitService,
     private marqueService: MarqueService,
@@ -114,11 +114,7 @@ export class NosProduitsComponent implements OnInit {
       this.produits = p;
     });
   }
-  moteurList(){
-this.moteurService.listeMoteurs().subscribe(m=>{
-  this.moteurs = m;
-})
-  }
+ 
 
   modeleList() {
     this.modeleService.getAllModeles().subscribe((mo) => {
@@ -157,9 +153,7 @@ this.moteurService.listeMoteurs().subscribe(m=>{
   }
 
   onSelectByMod(e) {
-    this.moteurService.moteursByModele(e.target.value).subscribe(m=>{
-      this.moteursByModele = m;
-    })
+   
     this.selectedModele.id = e.target.value;
   }
   onSelectByMoteur(e) {

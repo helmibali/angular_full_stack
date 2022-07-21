@@ -1,10 +1,11 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddDelegationComponent } from './admin/add-delegation/add-delegation.component';
+import { AddFamilleComponent } from './admin/add-famille/add-famille.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DelegationComponent } from './admin/delegation/delegation.component';
+import { FamilleComponent } from './admin/famille/famille.component';
 import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
-import { MouteurComponent } from './admin/mouteur/mouteur.component';
 import { ArtComponent } from './article/art/art.component';
 import { ArticleComponent } from './article/article/article.component';
 import { CommentsComponent } from './article/comments/comments.component';
@@ -83,7 +84,9 @@ const routes: Routes = [
   {path:"ajouter-delegation",component:AddDelegationComponent},
   // {path:"filter/:categorie/:libelleMarque/:modele/:gov/:deleg" ,component:FilterComponent},
   {path:"search" ,component:FilterComponent},
-  {path:"moteurs" ,component:MouteurComponent},
+  {path:"familles",component:FamilleComponent},
+  {path: "add-familles",component:AddFamilleComponent}
+  
 
 ];
 

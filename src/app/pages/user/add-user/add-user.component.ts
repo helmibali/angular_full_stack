@@ -59,9 +59,9 @@ export class AddUserComponent implements OnInit {
     this.userService.createData(formData).subscribe(data=>{
       console.log(data);
     });
-    this.router.navigate(['produits']).then(()=> {
-      window.location.reload();
-    });
+    // this.router.navigate(['produits']).then(()=> {
+    //   window.location.reload();
+    // });
    }
 
    else{
@@ -72,9 +72,9 @@ export class AddUserComponent implements OnInit {
     this.userService.createDataWithFile(formData).subscribe(data=>{
       console.log(data);
     });
-    this.router.navigate(['produits']).then(()=> {
-      window.location.reload();
-    });
+    // this.router.navigate(['produits']).then(()=> {
+    //   window.location.reload();
+    // });
    }
    
   }

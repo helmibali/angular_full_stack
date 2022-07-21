@@ -25,21 +25,21 @@ export class ArticleService {
     return this.http.request(req);
   }
   getArticleById(id: number):Observable<Article> {
-    return this.http.get<Article>(`${'/api/article'}/${id}`);
+    return this.http.get<Article>(`${'http://piece-de-rechange.herokuapp.com/api/article'}/${id}`);
   }
   createData(formData: FormData): Observable<any> {
-    return this.http.post('/api/article', formData);
+    return this.http.post('http://piece-de-rechange.herokuapp.com/api/article', formData);
   }
   updateData(formData: FormData,id:number): Observable<any> {
-    return this.http.put(`${'api/article'}/${id}`, formData);
+    return this.http.put(`${'http://piece-de-rechange.herokuapp.com/api/article'}/${id}`, formData);
   }
   listeArticles():Observable<Article[]>{
   
-    return this.http.get<Article[]>('api/articles');
+    return this.http.get<Article[]>('http://piece-de-rechange.herokuapp.com/api/articles');
   }
   supprimerArticle(id: number){
 
-    const url = `${'api/article'}/${id}`;
+    const url = `${'http://piece-de-rechange.herokuapp.com/api/article'}/${id}`;
     return this.http.delete(url, httpOPtions);
     }
 

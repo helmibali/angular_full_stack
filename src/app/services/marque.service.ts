@@ -30,33 +30,33 @@ public dataForm: FormGroup;
 		return this.http.request(req);
    }
    createData(formData: FormData): Observable<any> {
-    return this.http.post("/api/addMarque", formData);
+    return this.http.post("http://piece-de-rechange.herokuapp.com/api/addMarque", formData);
   }
 
   getData(id: number): Observable<Object> {
-    return this.http.get(`${'/api/marque'}/${id}`);
+    return this.http.get(`${'http://piece-de-rechange.herokuapp.com/api/marque'}/${id}`);
   }
   updateMarque(formData: FormData):Observable<Marque>{
-    return this.http.put<Marque>("/api/marque", formData);
+    return this.http.put<Marque>("http://piece-de-rechange.herokuapp.com/api/marque", formData);
     }
   deleteData(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
   getAll(): Observable<any> {
    
-    return this.http.get('/api/marque/liste');
+    return this.http.get('http://piece-de-rechange.herokuapp.com/api/marque/liste');
   }
   supprimerProduit(id: number){
 
-    const url = `${'/api/marque'}/${id}`;
+    const url = `${'http://piece-de-rechange.herokuapp.com/api/marque'}/${id}`;
     return this.http.delete(url, httpOPtions);
     }
     consulterMarque(id : number): Observable<Marque>{
-      const url = `${'/api/marque'}/${id}`;
+      const url = `${'http://piece-de-rechange.herokuapp.com/api/marque'}/${id}`;
       return this.http.get<Marque>(url);
     }
     getAllMarques():Observable<any>{
-      return this.http.get<any>('/api/marque/liste');
+      return this.http.get<any>('http://piece-de-rechange.herokuapp.com/api/marque/liste');
     }
 }
 

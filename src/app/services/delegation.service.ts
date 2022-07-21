@@ -15,14 +15,14 @@ export class DelegationService {
   constructor(private http : HttpClient) { }
 
   ListeDelegation():Observable<Delegation[]>{
-    return this.http.get<Delegation[]>('/api/delegations')
+    return this.http.get<Delegation[]>('http://piece-de-rechange.herokuapp.com/api/delegations')
   }
 
   ListDelegationByGouvernourat_id(id:number):Observable<any>{
-    return this.http.get<any>(`${'/api/delegations'}/${id}`)
+    return this.http.get<any>(`${'http://piece-de-rechange.herokuapp.com/api/delegations'}/${id}`)
   }
 
   ajouterDelegation(d : Delegation):Observable<Delegation>{
-    return this.http.post<Delegation>('/api/delegation',d,httpOPtions);
+    return this.http.post<Delegation>('http://piece-de-rechange.herokuapp.com/api/delegation',d,httpOPtions);
   }
 }
